@@ -3,9 +3,8 @@ print('Content-type: text/html\n')
 
 import os
 
-root = '/home/students/2022/jjiang20/public_html/CS1920-Final/'
+root = '/home/students/2022/jjiang20/public_html/introCSfinalSecond/'
 
-from pymongo import MongoClient
 
 import cgi
 
