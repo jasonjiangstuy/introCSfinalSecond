@@ -1,159 +1,160 @@
-import PIL
-from PIL import Image
-import requests
-from io import BytesIO
-from PIL import ImageFilter
-from PIL import ImageEnhance
-import numpy as np
+#! /usr/bin/python
+print('Content-type: text/html\n')
 
-# URL = "https://www.timeanddate.com/scripts/cityog.php?title=Current%20Local%20Time%20in&amp;city=New%20York&amp;state=New%20York&amp;country=USA&amp;image=new-york1"
-# response = requests.get(URL)
-# img = Image.open(BytesIO(response.content))
-img = Image.open('Annotation 2020-06-08 012506.jpg')
-img.save('before.jpg')
-#credit to https://predictivehacks.com/iterate-over-image-pixels/ to show how to iterate in PIL
-# greyscale
-blackAndWhite = img.convert("L")
+import os
 
-for x in range(img.width):
-    for y in range(img.height):
-        if blackAndWhite.getpixel( (x,y) )< 170: 
-            # set to black
-            blackAndWhite.putpixel( (x,y) ,0)
+root = '/home/students/2022/jjiang20/public_html/CS1920-Final/'
+
+from pymongo import MongoClient
+
+import cgi
+
+import cgitb
+cgitb.enable(display=0, logdir='./logdir')
+
+#functions -------------------------------
+def render_template(filename, **kwargs): #root = root
+    #given filename in this directory
+    #print('Where are we: ' + str(os.getcwd()))
+    os.chdir(root + 'templates')
+    #print('How About Now: ' + str(os.getcwd()))
+    try:
+        f = open(filename, 'r')
+        myFile = f.read()
+        f.close()
+    except:
+        print('filename '+ filename + ' not found in ' + os.getcwd())
+        raise ValueError('filename '+ filename + ' not found in ' + os.getcwd())
+    for key, value in kwargs.items():
+        print(key,value)
+        if type(key) == type('String'):
+            myFile = myFile.replace('{{' + key + '}}', str(value))
         else:
-            # set to white
-            blackAndWhite.putpixel( (x,y) ,255)
+            print('404 Known Internal Server Error')
+            raise(ValueError('Key value pair for templates must be strings'))
 
-blackAndWhite.show()
-
-#to identify the connected black letters from the top right corner -> first left
-
-def findSurrounding(startCoord, letterObject):
-    global foundAlready
-    myObject = letterObject
-    # print(startCoord)
-    # print('newblob')
-    #to avoid a recursion depth error, using a queue
-    stack = [startCoord]
-    for i in stack:
-        if i not in foundAlready:
-            # print(i)
-            startCoord = i 
-            foundAlready[startCoord] = ''
-            myObject.add(startCoord)
-
-            # black right pixel
-            testPixel =  (startCoord[0] + 1, startCoord[1]) 
-            if blackAndWhite.getpixel(testPixel) == 0 and testPixel not in foundAlready:
-                stack.append( testPixel )
-            # black bottom pixel
-            testPixel =  (startCoord[0] , startCoord[1] + 1) 
-            if blackAndWhite.getpixel(testPixel) == 0 and testPixel not in foundAlready:
-                stack.append( testPixel )
-            # black left pixel
-            testPixel =  (startCoord[0] - 1 , startCoord[1]) 
-            if blackAndWhite.getpixel(testPixel) == 0 and testPixel not in foundAlready:
-                stack.append( testPixel )
-        stack = stack[1:]
-    return myObject
-
+    #includes for first level embedded templates
+    while True:
+        if '{{include' in myFile:
+            Before, throw, save = myFile.partition('{{include')
+            save, throw, After = save.partition('}}')
+            save = save.strip(" '") 
+            # print(save)
+            try:
+                f = open(save, 'r')
+                include = f.read()
+                f.close()
+            except:
+                print('includes:' + 'filename '+ save + ' not found in ' + os.getcwd())
+                raise ValueError('includes:' + 'filename '+ save + ' not found in ' + os.getcwd())
+            myFile = Before + include + After
+        else:
+            break
             
-            
-class myletter():
-    def __init__(self, startPoint):
-        self.allPixels = []
-        self.top = startPoint[1]
-    def add(self, x):
-        self.allPixels.append(x)
-        # print(self.allPixels)
+    print(myFile)
 
-#find the bounds of the sentence
-    def findExtremes(self):
-        rightest, lowest = self.allPixels[0]
-        leftest = rightest
-        for x,y in self.allPixels:
-            if lowest < y:
-                lowest = y
-            if rightest < x:
-                rightest = x
-            if leftest > x:
-                leftest = x
-        highest = self.top
-        return leftest, rightest, lowest, highest
-
-            
-        
-
-#now iterating through each row, looking for letters
-
-#all black pixels that have been found
-foundAlready = {}
-
-#found letters
-
-foundletters = []
-
-for x in range(blackAndWhite.width):
-    for y in range(blackAndWhite.height):
-        if (x,y) not in foundAlready:
-            if blackAndWhite.getpixel((x,y)) == 0: 
-                #reset letterlist, list for this individual 
-                
-                q = findSurrounding( (x,y), myletter( (x,y) ) )
-                foundletters.append(q)
+def getInput(FieldStorage, *args): #returns the value of a bunch of key value pair, if not found, returns empty string//
+    inputs = []
+    eles = FieldStorage
+    for i in args:
+        inputs.append(str(eles.getfirst(i,'')))
+    return inputs
+data = cgi.FieldStorage()
+# app routes --------------------------------------------------------------------------------
 
 
-# print(foundletters)
-# look at found letters and make dict with order in frequences of bottom line
-# ycoord: [frequences, [rightest xcoords of that char]]
+#original DB
+# import pickle
 
-myletterFrequences = {}
-for i in foundletters:
-    # print(i.allPixels)
-    left, right, base, high = i.findExtremes()
-    # print(myletterFrequences)
-    # print(base)
+# def GetDB(): #get info from DB / makes the DB + return empty dict
+#     #{username: {email: blahblah, pwd: blahblah}}
 
-    if base in myletterFrequences:
-        myletterFrequences[base] = [myletterFrequences[base][0] + 1, myletterFrequences[base][1] + [right] , myletterFrequences[base][2] + [left], myletterFrequences[base][3] + [high] ]
-    else:
-        myletterFrequences[base] = [1, [right], [left], [high]]
+#     os.chdir('/home/students/2022/jjiang20')
+#     if os.path.exists('IntroFinalDB.p'):
+#         f = open('IntroFinalDB.p', 'rb')
+#         masterDB = pickle.load(f)
+#         f.close()
+#     else:
+#         masterDB = {}
+#         f = open('IntroFinalDB.p', 'wb+')
+#         pickle.dump(masterDB, f)
+#         f.close()
+#     return masterDB
+#idk if its needed
+# def GetEmails(): #get list of emails that are linked with accounts
+#     os.chdir('/home/students/2022/jjiang20')
+#     if os.path.exists('IntroFinalEmailDB.p'):
+#         f = open('IntroFinalDB.p', 'rb')
+#         emailDB = pickle.load(f)
+#         f.close()
+#     else:
+#         emailDB = []
+#         f = open('IntroFinalEmailDB.p', 'wb+')
+#         pickle.dump(emailDB, f)
+#         f.close()
+#     return emailDB
 
-# for i in myletterFrequences.values():
-#     print(len(i[1]))
 
-tolerance = 50
-
-# create new image to save the typed words to
-
-newImg = Image.new('RGB', (blackAndWhite.width, blackAndWhite.height), (255, 255, 255))
-# newImg.show()
-
-#copy paste to new doc
-# print(myletterFrequences)
-for k, v in myletterFrequences.items():
-    # print(v[0])
-    if v[0] < tolerance:
-        #doesnt pass tolerance of frequences
-        continue
-    else:
-        right = max(v[1])
-        left = min(v[2])
-        high = min(v[3])
-        # print(v[3])
-        # print((left, high, right, k))
-        cut = img.crop( (left, high, right, k) )
-        # raise ValueError()
-        newImg.paste(cut, (left, high))
-        # print('test')
-
-newImg.show()
-newImg.save('after.jpg')
-        
+#figuring out the requested path 
+# ~/jjiang20@moe.stuy.edu/main.py?path=login/game
 
 
 
-    
+# steps = path.split('/')
+# for i in steps: #going down the path
+#     if i == 'login':
+#         render_template('login.html')
+# if there is a path
+if 'PATH_INFO' in os.environ.keys():
+   path = str(os.environ['PATH_INFO'])
+   #print(path.split('/')[1:])
+   pathParts = path.split('/')[1:]
+   
+   if pathParts[0] == 'login':
+       render_template('login.html')
+else:
+    render_template('home.html')
 
 
+# #get login info --------------- // change to match mangodb
+# [whichForm] = getInput(data, 'whichForm')
+# if whichForm != '':
+#     if whichForm == 'Login':
+#         [username, passward] = getInput(data, 'username', 'pwd')
+#          #check if its in the DB
+#         if (users.count_documents({'username':username, 'password': password}) > 0):
+#             #success
+#             print('success')
+#         else:
+#             #fail
+#             print('theses Credientials don\'t match our records\nplease try again')
 
+#     elif whichForm == 'NewUsers':
+#         [email, username, passward, cpassward] = getInput(data, 'email', 'username', 'pwd', 'cpwd')
+#         if passward != cpassward:
+#             print('Bad Login/Signup Request, passwards don\'t match')
+#             ValueError('Passwards dont match, wasn\'t stopped by JS')
+#         else:
+#             if not (users.count_documents({'username':username}) > 0): #is username taken
+#                 if not (users.count_documents({'email':email}) > 0): #is email taken
+#                     users.insert_one({
+#                         'username':username,
+#                         'password':password,
+#                         'email':email,
+#                         'groups':[]
+#                         })
+#                     print('success')
+#                 else:
+#                     #fail
+#                     print('this email has been taken\nplease try again')
+#             else:
+#                 #fail
+#                 print('this username has been taken\nplease try again')
+#     else:
+#         print('Bad Login/Signup Request')
+#         ValueError('Bad Login/Signup Request')
+   
+
+ # testing for vals of keys
+for param in os.environ.keys():
+    print("<b>%20s</b>: %s<\br>" % (param, os.environ[param]))
