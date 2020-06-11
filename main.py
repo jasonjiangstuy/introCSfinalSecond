@@ -12,12 +12,12 @@ outsideRoot =  '~/jjiang20/introCSfinalSecond/'
 for param in os.environ.keys():
     print("<b>%20s</b>: %s<\br>" % (param, os.environ[param]))
 
-if 'SCRIPT_FILENAME' in os.environ.keys():
-    path = str(os.environ['SCRIPT_FILENAME'])
-    #print(path.split('/')[1:])
-    outsideRoot = path.replace('main.py', '')
-    print(outsideRoot)
-elif 'SCRIPT_NAME' in os.environ.keys():
+# if 'SCRIPT_FILENAME' in os.environ.keys():
+#     path = str(os.environ['SCRIPT_FILENAME'])
+#     #print(path.split('/')[1:])
+#     outsideRoot = path.replace('main.py', '')
+#     print(outsideRoot)
+if 'SCRIPT_NAME' in os.environ.keys():
     path = str(os.environ['SCRIPT_NAME'])
     #print(path.split('/')[1:])
     outsideRoot = path.replace('main.py', '')
