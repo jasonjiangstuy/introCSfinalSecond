@@ -38,7 +38,7 @@ def render_template(filename, **kwargs): #root = root
         f = open(filename, 'r')
         myFile = f.read()
         f.close()
-        print(myFile)
+        # print(myFile)
     except:
         print('filename '+ filename + ' not found in ' + os.getcwd())
         raise ValueError('filename '+ filename + ' not found in ' + os.getcwd())
