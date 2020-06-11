@@ -2,9 +2,25 @@
 print('Content-type: text/html\n')
 
 import os
+import StuyTools
+StuyTools.PWS_startup()
 
+#backup root path
 root = '/home/students/2022/jjiang20/public_html/introCSfinalSecond/'
 
+for param in os.environ.keys():
+    print("<b>%20s</b>: %s<\br>" % (param, os.environ[param]))
+
+if 'SCRIPT_FILENAME' in os.environ.keys():
+    path = str(os.environ['SCRIPT_FILENAME'])
+    #print(path.split('/')[1:])
+    outsideRoot = path.replace('main.py', '')
+    print(outsideRoot)
+elif 'SCRIPT_NAME' in os.environ.keys():
+    path = str(os.environ['SCRIPT_NAME'])
+    #print(path.split('/')[1:])
+    outsideRoot = path.replace('main.py', '')
+    print(outsideRoot)
 
 import cgi
 
@@ -15,15 +31,19 @@ cgitb.enable(display=0, logdir='./logdir')
 def render_template(filename, **kwargs): #root = root
     #given filename in this directory
     #print('Where are we: ' + str(os.getcwd()))
-    os.chdir(root + 'templates')
+    os.chdir('templates')
     #print('How About Now: ' + str(os.getcwd()))
     try:
         f = open(filename, 'r')
         myFile = f.read()
         f.close()
+        print(myFile)
     except:
         print('filename '+ filename + ' not found in ' + os.getcwd())
         raise ValueError('filename '+ filename + ' not found in ' + os.getcwd())
+    #include root for files
+    myFile = myFiles.replace('{{root}}', str(outsideRoot))
+
     for key, value in kwargs.items():
         print(key,value)
         if type(key) == type('String'):
@@ -109,10 +129,10 @@ if 'PATH_INFO' in os.environ.keys():
    #print(path.split('/')[1:])
    pathParts = path.split('/')[1:]
    
-   if pathParts[0] == 'login':
-       render_template('login.html')
-else:
-    render_template('home.html')
+   if 'login' in pathParts:
+        render_template('login.html')
+   else:
+        render_template('home.html')
 
 
 # #get login info --------------- // change to match mangodb
@@ -155,5 +175,3 @@ else:
    
 
  # testing for vals of keys
-for param in os.environ.keys():
-    print("<b>%20s</b>: %s<\br>" % (param, os.environ[param]))
