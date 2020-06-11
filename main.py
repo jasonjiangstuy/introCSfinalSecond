@@ -42,7 +42,7 @@ def render_template(filename, **kwargs): #root = root
         print('filename '+ filename + ' not found in ' + os.getcwd())
         raise ValueError('filename '+ filename + ' not found in ' + os.getcwd())
     #include root for files
-    myFile = myFiles.replace('{{root}}', str(outsideRoot))
+    myFile = myFile.replace('{{root}}', str(outsideRoot))
 
     for key, value in kwargs.items():
         print(key,value)
@@ -131,8 +131,8 @@ if 'PATH_INFO' in os.environ.keys():
    
    if 'login' in pathParts:
         render_template('login.html')
-   else:
-        render_template('home.html')
+else:
+    render_template('home.html')
 
 
 # #get login info --------------- // change to match mangodb
