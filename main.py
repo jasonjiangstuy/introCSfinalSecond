@@ -130,11 +130,19 @@ if 'PATH_INFO' in os.environ.keys():
    path = str(os.environ['PATH_INFO'])
    #print(path.split('/')[1:])
    pathParts = path.split('/')[1:]
-   
-   if 'login' in pathParts:
-        render_template('login.html')
+   if len(pathParts) > 0:
+      if pathParts[0] == 'login':
+         render_template('login.html')
+      elif pathParts[0] == 'go':
+         render_template('goclean.html')
+      elif pathParts[0] == 'works':
+         render_template('about.html')
+      else:
+         render_template('home.html')
+   else:
+      render_template('home.html')
 else:
-    render_template('home.html')
+   render_template('home.html')
 
 
 # #get login info --------------- // change to match mangodb
