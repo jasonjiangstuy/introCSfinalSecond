@@ -5,8 +5,9 @@ import os
 import StuyTools
 StuyTools.PWS_startup()
 
-#backup root path
+#backup paths
 root = '/home/students/2022/jjiang20/public_html/introCSfinalSecond/'
+outsideRoot =  '~/jjiang20/introCSfinalSecond/'
 
 for param in os.environ.keys():
     print("<b>%20s</b>: %s<\br>" % (param, os.environ[param]))
