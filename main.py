@@ -67,6 +67,7 @@ def render_template(filename, **kwargs): #root = root
             except:
                 print('includes:' + 'filename '+ save + ' not found in ' + os.getcwd())
                 raise ValueError('includes:' + 'filename '+ save + ' not found in ' + os.getcwd())
+            include = include.replace('{{root}}', str(outsideRoot))
             myFile = Before + include + After
         else:
             break
