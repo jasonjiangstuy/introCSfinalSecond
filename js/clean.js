@@ -2,7 +2,9 @@ function initial(){
    // only show submit image
    $('#Guide').hide()
 }
-$(document).ready(initial())
+$(document).ready(function(){
+   initial();
+})
 var stage = 0
 
 // hide / show objects based on stage
@@ -12,7 +14,7 @@ function showStage(step){
       initial()
    }
    else if (stage == 1){
-      
+
    }
 }
 function move(step){
