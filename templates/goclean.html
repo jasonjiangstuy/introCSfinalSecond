@@ -9,28 +9,28 @@
         <script src="{{root}}/js/clean.js"></script>
     </head>
     <body>
-        
         <!-- navbar -->
         {{include 'navbar.html'}}
-            <div id='formArea'>
-                <div id='responseBox'></div>
+        <div id='responseBox'></div>
+
+            <div id='submitImg'>
+                
                 <span id='heading'>Clean Your Work</span>
 
                   <!-- How to -->
                   <!-- <a href="#Guide"> -->
                      <button onclick='toggleGuide()' id='toggleGuide'>User Guide</button>
                   <!-- </a> -->
-                
 
-                  
-                
-               
-                <span id='switch' onclick="switchNew()"> change some of the controls</span>
-                
+                  <input type="file" accept="image/*" capture>
+                <button onclick="nextStage()">Next</button> 
                 <!-- white it out yourself -> add link for it  -->
 
             </div>
 
+            <div id='dropper' class='mainBoxes'>
+
+            </div>
 
             <div id="Guide">
                <h1>
@@ -41,7 +41,7 @@
                </h1>
                <ol>
                   <li>
-                     Using a marker in a color other than black, draw a line exactly on the edge of the paper from the top right, to about a tenth of the way down
+                     Using a marker in a color other than black, draw a line exactly on the left edge of the paper starting from the top right, to about a tenth of the way down
                   </li>
                   <li>
                      Make sure the paper is right side up
@@ -74,14 +74,14 @@
 
                </ol>
                <h1>
-                  What will affect our preformance:
+                  What will affect our proformance:
                </h1>
                <ol>
                   <li>
                      Fonts where the words are connected/overlap each other
                   </li>
                   <li>
-                     Short Typed Sentances
+                     Short Typed Sentences
                   </li>
                   <li>
                      Slanted typed words (ex. bad printing job)
