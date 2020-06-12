@@ -2,7 +2,7 @@
 <html>
     <head>
         {{include 'standard.html'}}
-        <title>Productivity App Login Page</title>
+        <title>Homework Cleaner | Erase your handwritten Work</title>
         <link rel="stylesheet" href="{{root}}/css/clean.css">
         <!-- testing -->
         <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script> -->
@@ -14,9 +14,13 @@
         {{include 'navbar.html'}}
             <div id='formArea'>
                 <div id='responseBox'></div>
-                <span id='heading'>Login</span>
+                <span id='heading'>Clean Your Work</span>
+
+                  <!-- How to -->
+                  <button id='toggleGuide'>User Guide</button>
                 <form id='form' action="main.py" method="GET">
-                    <input id='whichForm' name='whichForm' type="text" style='display: none;'value="Login">
+
+                    <input id='whichForm' name='whichForm' type="text" style='display: none;'value="Auto">
                     <label class='email' for="email">Email:</label><br  class="email">
                     <input type="text" id='email' class="email" name="email"><br  class="email">
 
@@ -29,9 +33,67 @@
                     <button id='submit' type="submit">SignIn</button>
                 </form>
 
-                <span id='switch' onclick="switchNew()">New User</span>
-                <span id='forgotPwd'> I forgot my passward</span>
+
+                <p>Not satified?</p>
+                <span id='switch' onclick="switchNew()"> change some of the controls</span>
+                
+                <!-- white it out yourself -> add link for it  -->
+
             </div>
 
+
+            <div id="Guide">
+               <h1>
+                  How To Use Our HandWriter Eraser
+               </h1>
+               <ol>
+                  <li>
+                     Using a marker in a color other than black, draw a line exactly on the edge of the paper from the top right, to about a tenth of the way down
+                  </li>
+                  <li>
+                     Make sure the paper is right side up
+                  </li> 
+                  <li>
+                     Take the picture as straight as you can
+                  </li>
+                  <li>
+                     Upload the file, and press next
+                  </li>
+                  <li>
+                     Use the dropper to give us the color of the marker that you've marked the top left corner with
+                  </li>
+                  <li>
+                     (Optionally) In the next step change the default variables that will be used to prossess the images
+                  </li>
+                  <li>
+                     Finally, look at the final image, you can choose to re process it with diffrent variables, or manually white out the image
+                  </li>
+
+               </ol>
+               <p>.... Now what else is there to know?</p>
+               <h1>
+                  What is allowed:
+               </h1>
+                  <li>
+                     all sizes of paper and oriantation (landscape is acceptable)
+                  </li>
+
+               </ol>
+               <h1>
+                  What will effect our preformance:
+               </h1>
+               <ol>
+                  <li>
+                     Fonts where the words are connected/overlap each other
+                  </li>
+                  <li>
+                     Short Typed Sentances
+                  </li>
+                  <li>
+                     Slanted typed words (ex. bad printing job)
+                  </li>
+               </ol>
+
+            </div>
     </body>
 </html> 

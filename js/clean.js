@@ -7,7 +7,7 @@ $(document).ready(function(){
 function switchNew(){
    $('#formArea').hide('slow', function(){
        $('#heading').text('New Users')
-       $('#whichForm').val('NewUsers')
+       $('#whichForm').val('Choice')
        $('#switch').text('Returning Users')
                    .attr('onclick', 'switchOld()')
        $('#submit').text('Make Account')
@@ -23,7 +23,7 @@ function switchNew(){
 function switchOld(){
    $('#formArea').hide('slow', function(){
        $('#heading').text('Login')
-       $('#whichForm').val('Login')
+       $('#whichForm').val('Auto')
        $('#switch').text('New User')
                    .attr('onclick', 'switchNew()')
        $('#submit').text('Login')
@@ -57,3 +57,7 @@ $("#form").submit(function(event){
    }
 
 });
+
+function toggleGuide(){
+
+}
