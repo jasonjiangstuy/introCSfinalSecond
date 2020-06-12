@@ -61,10 +61,12 @@ $("#form").submit(function(event){
 var guide = false
 function toggleGuide(){
    if (guide == false){
-      $('#Guide').show();
+      $('#formArea').hide('slow');
       guide = !guide;
+      $('#Guide').show('slow');
    }else if (guide == true){
-      $('#Guide').hide();
+      $('#Guide').hide('slow');
+      $('#formArea').show('slow');
       guide = !guide;
        // credit https://www.w3schools.com/howto/howto_js_scroll_to_top.asp
        document.body.scrollTop = 0; // For Safari
@@ -73,6 +75,7 @@ function toggleGuide(){
    else{
       $('#Guide').hide();
       guide = false;
+      $('#formArea').show('slow');
       // credit https://www.w3schools.com/howto/howto_js_scroll_to_top.asp
       document.body.scrollTop = 0; // For Safari
       document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
