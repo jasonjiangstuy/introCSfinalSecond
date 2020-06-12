@@ -2,6 +2,7 @@ $(document).ready(function(){
    // set inital values
    $('.email').hide()
    $('.cpwd').hide()
+   $('#Guide').hide()
 })
 
 function switchNew(){
@@ -57,7 +58,18 @@ $("#form").submit(function(event){
    }
 
 });
-
+var guide = false
 function toggleGuide(){
-
+   if (guide == false){
+      $('#Guide').show();
+      guide = !guide;
+   }else if (guide == true){
+      $('#Guide').hide();
+      guide = !guide
+   }
+   else{
+      $('#Guide').hide();
+      guide = false
+   }
+      
 }
