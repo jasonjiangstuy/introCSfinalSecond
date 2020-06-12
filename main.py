@@ -23,7 +23,7 @@ if 'SCRIPT_NAME' in os.environ.keys():
     #print(path.split('/')[1:])
     outsideRoot = path.replace('main.py', '')
 
-    print(outsideRoot)
+   #  print(outsideRoot)
 
 import cgi
 
