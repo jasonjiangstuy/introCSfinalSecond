@@ -47,3 +47,8 @@ input, label{
     font-size: 2em;
 
 }
+
+#guide{
+   background-color: #4d94ff;
+   margin: 3em;
+}
