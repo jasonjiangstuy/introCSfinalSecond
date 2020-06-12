@@ -33,9 +33,9 @@ cgitb.enable(display=0, logdir='./logdir')
 #functions -------------------------------
 def render_template(filename, **kwargs): #root = root
     #given filename in this directory
-    print('Where are we: ' + str(os.getcwd()))
+   #  print('Where are we: ' + str(os.getcwd()))
     os.chdir('templates')
-    print('How About Now: ' + str(os.getcwd()))
+   #  print('How About Now: ' + str(os.getcwd()))
     try:
         f = open(filename, 'r')
         myFile = f.read()
