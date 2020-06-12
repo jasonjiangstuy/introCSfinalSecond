@@ -8,8 +8,10 @@ StuyTools.PWS_startup()
 #backup paths
 root = '/home/students/2022/jjiang20/public_html/introCSfinalSecond/'
 outsideRoot =  '~/jjiang20/introCSfinalSecond/'
-for param in os.environ.keys():
-    print("<b>%20s</b>: %s<\br>" % (param, os.environ[param]))
+
+#testing
+# for param in os.environ.keys():
+#     print("<b>%20s</b>: %s<\br>" % (param, os.environ[param]))
 
 # if 'SCRIPT_FILENAME' in os.environ.keys():
 #     path = str(os.environ['SCRIPT_FILENAME'])
