@@ -19,9 +19,10 @@ outsideRoot =  '~/jjiang20/introCSfinalSecond/'
 #     outsideRoot = path.replace('main.py', '')
 #     print(outsideRoot)
 if 'SCRIPT_NAME' in os.environ.keys():
-    path = str(os.environ['SCRIPT_NAME'])
+    path = str(os.environ['SCRIPT_NAME']) 
     #print(path.split('/')[1:])
-    outsideRoot = path.replace('main.py', '')
+    # path for the current directory, used to get the path for images and what not
+    outsideRoot = path.replace('main.py', '') 
 
    #  print(outsideRoot)
 
