@@ -56,8 +56,8 @@ function showStage(step){
                   canvas.width = blockSprite.width;
                   canvas.height = blockSprite.height; 
                   console.log(canvas);
-                  c = canvas.getContext('2d')
-                  c.drawImage(blockSprite, 0, 0, blockSprite.width, blockSprite.height);
+                  // c = canvas.getContext('2d')
+                  // c.drawImage(blockSprite, 0, 0, blockSprite.width, blockSprite.height);
                   blockSprite.mousemove(function(e) {
                          
                      if(!this.canvas) {
