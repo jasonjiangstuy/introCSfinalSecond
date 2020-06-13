@@ -13,6 +13,8 @@ function initial(){
    $('#Guide').hide()
 }
 // hide / show objects based on stage
+
+var drawnImage = false;
 function showStage(step){ 
 
    stage = stage + step
@@ -37,25 +39,34 @@ function showStage(step){
 
 
       // credit to https://stackoverflow.com/questions/5802580/html-input-type-file-get-the-image-before-submitting-the-form
-      else if (myImg[0].files && myImg[0].files[0]) {
-         myImg = myImg[0] // change to native js
-         var reader = new FileReader();
-         reader.onload = function (e) {
-           $('#imagePreview')
-             .attr('src', e.target.result)
-             .width(150)
-             .height(200);
-         };
-         reader.readAsDataURL(myImg.files[0]);
-         var img = $('#imagePreview')[0]
-         var canvas = $('#mainCanvas')[0]
-         console.log(img);
-         console.log(canvas);
+      else if (myImg[0].files && myImg[0].files[0] && FileReader) {
+         if (!drawnImage){
+            myImg = myImg[0] // change to native js
+            var reader = new FileReader();
+            reader.onload = function (e) {
+              $('#imagePreview')
+                .attr('src', e.target.result)
+                .width(150)
+                .height(200);
+            };
+            reader.readAsDataURL(myImg.files[0]);
+            var img = $('#imagePreview')[0]
+            var canvas = $('#mainCanvas')[0]
+            console.log(img);
+            console.log(canvas);
+               
+            canvas.style.width = img.style.width;
+            canvas.style.height = img.style.height; 
+            c = canvas.getContext('2d')
+            c.drawImage(img, 0, 0);
+         }
+         else{
+            $('#Guide').hide();
+            $('#submitImg').hide('slow');
+            $('#dropper').show('slow');
             
-         canvas.style.width = img.style.width;
-         canvas.style.height = img.style.height; 
-         c = canvas.getContext('2d')
-         c.drawImage(img, 0, 0);
+         }
+         
        }
       else{
          alert("Your browser doesnt support the FileReader API please try using another browser"); 
