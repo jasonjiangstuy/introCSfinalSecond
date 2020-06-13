@@ -54,7 +54,8 @@ function showStage(step){
             
          canvas.style.width = img.style.width;
          canvas.style.height = img.style.height; 
-         canvas.getContext('2d').drawImage(img, 0, 0);
+         c = canvas.getContext('2d')
+         c.drawImage(img, 0, 0);
        }
       else{
          alert("Your browser doesnt support the FileReader API please try using another browser"); 
