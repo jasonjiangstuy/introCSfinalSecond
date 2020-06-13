@@ -47,8 +47,8 @@ function showStage(step){
             reader.onload = function (e) {
               $('#imagePreview')
                 .attr('src', e.target.result)
-                .width(150)
-                .height(200);
+               //  .width(150)
+               //  .height(200);
                 var img = $('#imagePreview')[0]
                var canvas = $('#mainCanvas')[0]
                console.log(img);

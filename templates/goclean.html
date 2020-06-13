@@ -18,7 +18,7 @@
         <div id='formArea'>
             <div id='submitImg' class='mainBoxes'>
                 
-                <span id='heading'>Clean Your Work</span>
+               <span id='heading'>Clean Your Work</span>
 
                   <!-- How to -->
                   <!-- <a href="#Guide"> -->
@@ -26,14 +26,30 @@
                   <!-- </a> -->
 
                   <input id="picture" type="file" accept="image/*" capture>
-                <button onclick="move(1)">Next</button> 
-                <!-- white it out yourself -> add link for it  -->
+                  <button onclick="move(1)">Next</button> 
+                  <!-- white it out yourself -> add link for it  -->
 
             </div>
 
             <div id='dropper' class='mainBoxes'>
+
+               <span id='heading'>Clean Your Work</span>
+               <button onclick='toggleGuide()' id='toggleGuide'>User Guide</button>
+
+
                <img style='display: none;' id='imagePreview'></img>
                <canvas id='mainCanvas'></canvas>
+
+               <table>
+                  <tr>
+                     <td>
+               <button onclick="move(-1)">Previous</button> 
+            </td><td>
+               <button onclick="move(1)">Next</button> 
+            </td>
+            </tr>
+               </table>
+
             </div>
 
 
