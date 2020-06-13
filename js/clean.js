@@ -5,7 +5,7 @@ $(document).ready(function(){
 var stage = 0
 function second(){
 
-   $('#Guide').hide();
+   $('#Guide').hide('slow');
    $('#submitImg').hide('slow');
    $('#dropper').show('slow');
 }
@@ -15,8 +15,9 @@ function initial(){
    stage = 0
    console.log('stage:', stage);
    console.log('start or restart');
-   $('#Guide').hide()
-   $('#dropper').hide();
+   $('#Guide').hide('slow')
+   $('#dropper').hide('slow');
+   $('#submitImg').show('slow');
 }
 // hide / show objects based on stage
 
@@ -27,7 +28,7 @@ function showStage(step){
    console.log('stage:', stage);
    
    if (stage == 0) {
-      initial()
+      initial();
    }
    else if (stage == 1){
       var myImg = $('#picture')
@@ -44,25 +45,27 @@ function showStage(step){
 
 
 
-      // credit to https://stackoverflow.com/questions/5802580/html-input-type-file-get-the-image-before-submitting-the-form
       else if (myImg[0].files && myImg[0].files[0] && FileReader) {
          if (!drawnImage){
             myImg = myImg[0] // change to native js
             var reader = new FileReader();
             reader.onload = function (e) {
-              $('#imagePreview')
-                .attr('src', e.target.result)
+              var blockSprite = new Image();
+              blockSprite.src = e.target.result;
+              blockSprite.onload = function(){
+                  var canvas = $('#mainCanvas')[0]
+                  canvas.style.width = img.naturalWidth;
+                  canvas.style.height = img.naturalHeight; 
+                  console.log(canvas);
+                  c = canvas.getContext('2d')
+                  c.drawImage(blockSprite, 0, 0);
+               }
                //  .width(150)
                //  .height(200);
-                var img = $('#imagePreview')[0]
-               var canvas = $('#mainCanvas')[0]
-               console.log(img);
-               console.log(canvas);
+               
                   
-               canvas.style.width = img.style.width;
-               canvas.style.height = img.style.height; 
-               c = canvas.getContext('2d')
-               c.drawImage(img, 0, 0);
+               
+               // call back
                second()
             };
             
