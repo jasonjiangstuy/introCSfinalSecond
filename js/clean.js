@@ -48,17 +48,18 @@ function showStage(step){
                 .attr('src', e.target.result)
                 .width(150)
                 .height(200);
+                var img = $('#imagePreview')[0]
+               var canvas = $('#mainCanvas')[0]
+               console.log(img);
+               console.log(canvas);
+                  
+               canvas.style.width = img.style.width;
+               canvas.style.height = img.style.height; 
+               c = canvas.getContext('2d')
+               c.drawImage(img, 0, 0);
             };
             reader.readAsDataURL(myImg.files[0]);
-            var img = $('#imagePreview')[0]
-            var canvas = $('#mainCanvas')[0]
-            console.log(img);
-            console.log(canvas);
-               
-            canvas.style.width = img.style.width;
-            canvas.style.height = img.style.height; 
-            c = canvas.getContext('2d')
-            c.drawImage(img, 0, 0);
+            
          }
          
          $('#Guide').hide();
