@@ -58,7 +58,8 @@ function showStage(step){
                   canvas.style.height = blockSprite.naturalHeight + "px"; 
                   console.log(canvas);
                   c = canvas.getContext('2d')
-                  c.drawImage(blockSprite, 0, 0, blockSprite.naturalWidth, blockSprite.naturalHeight);
+                  c.drawImage(blockSprite, 0, 0);
+                  document.body.appendChild(blockSprite);
                }
                //  .width(150)
                //  .height(200);
