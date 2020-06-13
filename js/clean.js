@@ -44,7 +44,7 @@ function showStage(step){
          initial();
       }
       var img = $('#imagePreview')
-      var canvas = $('mainCanvas')
+      var canvas = $('#mainCanvas')
       canvas.width = img.width;
       canvas.height = img.height;
       canvas.getContext('2d').drawImage(img, 0, 0, img.width, img.height);
