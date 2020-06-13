@@ -13,7 +13,8 @@ function initial(){
 function showStage(step){ 
 
    stage = stage + step
-   print('stage:', stage)
+   console.log('stage:', stage);
+   
    if (stage == 0) {
       initial()
    }
