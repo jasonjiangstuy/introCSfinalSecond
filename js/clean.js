@@ -52,8 +52,8 @@ function showStage(step){
          console.log(img);
          console.log(canvas);
             
-         canvas.width = img.width;
-         canvas.height = img.height; 
+         canvas.style.width = img.style.width;
+         canvas.style.height = img.style.height; 
          canvas.getContext('2d').drawImage(img, 0, 0, img.width, img.height);
        }
       else{
