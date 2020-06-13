@@ -60,12 +60,12 @@ function showStage(step){
             c = canvas.getContext('2d')
             c.drawImage(img, 0, 0);
          }
-         else{
-            $('#Guide').hide();
-            $('#submitImg').hide('slow');
-            $('#dropper').show('slow');
-            
-         }
+         
+         $('#Guide').hide();
+         $('#submitImg').hide('slow');
+         $('#dropper').show('slow');
+
+         
          
        }
       else{
