@@ -14,13 +14,46 @@ function showStage(step){
       initial()
    }
    else if (stage == 1){
+      var myImg = $('#picture')
+      var imgVal = myImg.val(); 
+      if(imgVal=='') { 
+         alert("empty input file, please try again"); 
+         // back to start
+         initial();
+      }
+      // // test if img is an animated gif
+      // var fs = require('fs')
+      // , animated = require('animated-gif-detector');
+
+
+
+      // credit to https://stackoverflow.com/questions/5802580/html-input-type-file-get-the-image-before-submitting-the-form
+      if (myImg.files && myImg.files[0]) {
+         var reader = new FileReader();
+         reader.onload = function (e) {
+           $('#imagePreview')
+             .attr('src', e.target.result)
+             .width(150)
+             .height(200);
+         };
+         reader.readAsDataURL(myImg.files[0]);
+       }
+      else{
+         alert("there is a error handling the file, please try again"); 
+         // back to start
+         initial();
+      }
+      var img = $('#imagePreview')
+      var canvas = $('mainCanvas')
+      canvas.width = img.width;
+      canvas.height = img.height;
+      canvas.getContext('2d').drawImage(img, 0, 0, img.width, img.height);
+      
 
    }
 }
 function move(step){
-   showStage(stage + step)
-   
-   
+   showStage(stage + step)   
 }
 
 var guide = false
