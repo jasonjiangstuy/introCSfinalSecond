@@ -54,11 +54,11 @@ function showStage(step){
               blockSprite.src = e.target.result;
               blockSprite.onload = function(){
                   var canvas = $('#mainCanvas')[0]
-                  canvas.style.width = blockSprite.naturalWidth;
-                  canvas.style.height = blockSprite.naturalHeight; 
+                  canvas.style.width = blockSprite.naturalWidth + "px";
+                  canvas.style.height = blockSprite.naturalHeight + "px"; 
                   console.log(canvas);
                   c = canvas.getContext('2d')
-                  c.drawImage(blockSprite, 0, 0);
+                  c.drawImage(blockSprite, 0, 0, blockSprite.naturalWidth, blockSprite.naturalHeight);
                }
                //  .width(150)
                //  .height(200);
