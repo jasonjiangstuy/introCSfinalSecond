@@ -51,7 +51,6 @@ function showStage(step){
             var reader = new FileReader();
             reader.onload = function (e) {
               var blockSprite = document.createElement("IMG");
-              blockSprite.setAttribute("src", e.target.result); 
               blockSprite.onload = function(){
                   var canvas = $('#mainCanvas')[0]
                   canvas.style.width = blockSprite.width + "px";
@@ -61,6 +60,7 @@ function showStage(step){
                   c.drawImage(blockSprite, 0, 0, blockSprite.width, blockSprite.height);
                   document.body.appendChild(blockSprite);
                }
+               blockSprite.setAttribute("src", e.target.result); 
                //  .width(150)
                //  .height(200);
                
