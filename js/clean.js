@@ -1,15 +1,19 @@
-function initial(){
-   // only show submit image
-   $('#Guide').hide()
-}
+
 $(document).ready(function(){
    initial();
 })
 var stage = 0
 
+function initial(){
+   // only show submit image
+   stage = 0
+   $('#Guide').hide()
+}
 // hide / show objects based on stage
 function showStage(step){ 
+
    stage = stage + step
+   print('stage:', stage)
    if (stage == 0) {
       initial()
    }
