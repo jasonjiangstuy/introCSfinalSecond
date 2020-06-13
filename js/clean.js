@@ -50,8 +50,8 @@ function showStage(step){
             myImg = myImg[0] // change to native js
             var reader = new FileReader();
             reader.onload = function (e) {
-              var blockSprite = new Image();
-              blockSprite.src = e.target.result;
+              var blockSprite = document.createElement("IMG");
+              blockSprite.setAttribute("src", e.target.result); 
               blockSprite.onload = function(){
                   var canvas = $('#mainCanvas')[0]
                   // canvas.style.width = blockSprite.naturalWidth + "px";
