@@ -37,20 +37,21 @@ function showStage(step){
              .height(200);
          };
          reader.readAsDataURL(myImg.files[0]);
+         var img = $('#imagePreview')[0]
+         var canvas = $('#mainCanvas')[0]
+         console.log(img);
+         console.log(canvas);
+            
+         canvas.width = img.width;
+         canvas.height = img.height; 
+         canvas.getContext('2d').drawImage(img, 0, 0, img.width, img.height);
        }
       else{
-         alert("there is a error handling the file, please try again"); 
+         alert("Your browser doesnt support the FileReader API please try using another browser"); 
          // back to start
          initial();
       }
-      var img = $('#imagePreview')[0]
-      var canvas = $('#mainCanvas')[0]
-      console.log(img);
-      console.log(canvas);
-            
-      canvas.width = img.width;
-      canvas.height = img.height; 
-      canvas.getContext('2d').drawImage(img, 0, 0, img.width, img.height);
+      
       
 
    }
