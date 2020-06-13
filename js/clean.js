@@ -38,6 +38,7 @@ function showStage(step){
 
       // credit to https://stackoverflow.com/questions/5802580/html-input-type-file-get-the-image-before-submitting-the-form
       else if (myImg[0].files && myImg[0].files[0]) {
+         myImg = myImg[0] // change to native js
          var reader = new FileReader();
          reader.onload = function (e) {
            $('#imagePreview')
