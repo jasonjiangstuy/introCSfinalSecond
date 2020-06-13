@@ -54,8 +54,8 @@ function showStage(step){
               blockSprite.src = e.target.result;
               blockSprite.onload = function(){
                   var canvas = $('#mainCanvas')[0]
-                  canvas.style.width = blockSprite.naturalWidth + "px";
-                  canvas.style.height = blockSprite.naturalHeight + "px"; 
+                  // canvas.style.width = blockSprite.naturalWidth + "px";
+                  // canvas.style.height = blockSprite.naturalHeight + "px"; 
                   console.log(canvas);
                   c = canvas.getContext('2d')
                   c.drawImage(blockSprite, 0, 0);
