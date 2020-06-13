@@ -11,6 +11,7 @@ function initial(){
    console.log('stage:', stage);
    console.log('start or restart');
    $('#Guide').hide()
+   $('#dropper').hide();
 }
 // hide / show objects based on stage
 
@@ -57,14 +58,19 @@ function showStage(step){
                canvas.style.height = img.style.height; 
                c = canvas.getContext('2d')
                c.drawImage(img, 0, 0);
+               $('#Guide').hide();
+               $('#submitImg').hide('slow');
+               $('#dropper').show('slow');
             };
             reader.readAsDataURL(myImg.files[0]);
             
+         }else{
+            $('#Guide').hide();
+            $('#submitImg').hide('slow');
+            $('#dropper').show('slow');
          }
          
-         $('#Guide').hide();
-         $('#submitImg').hide('slow');
-         $('#dropper').show('slow');
+         
 
          
          
