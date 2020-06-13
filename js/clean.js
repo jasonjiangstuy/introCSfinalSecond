@@ -66,7 +66,7 @@ function showStage(step){
    }
 }
 function move(step){
-   showStage(stage + step)   
+   showStage(step)   
 }
 
 var guide = false
