@@ -3,7 +3,12 @@ $(document).ready(function(){
    initial();
 })
 var stage = 0
+function second(){
 
+   $('#Guide').hide();
+   $('#submitImg').hide('slow');
+   $('#dropper').show('slow');
+}
 function initial(){
    // only show submit image
    
@@ -58,16 +63,13 @@ function showStage(step){
                canvas.style.height = img.style.height; 
                c = canvas.getContext('2d')
                c.drawImage(img, 0, 0);
-               $('#Guide').hide();
-               $('#submitImg').hide('slow');
-               $('#dropper').show('slow');
+               second()
             };
-            reader.readAsDataURL(myImg.files[0]);
             
+            reader.readAsDataURL(myImg.files[0]);
+            drawnImage = true;
          }else{
-            $('#Guide').hide();
-            $('#submitImg').hide('slow');
-            $('#dropper').show('slow');
+            second()
          }
          
          
