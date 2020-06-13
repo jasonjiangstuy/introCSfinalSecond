@@ -6,7 +6,10 @@ var stage = 0
 
 function initial(){
    // only show submit image
+   
    stage = 0
+   console.log('stage:', stage);
+   console.log('start or restart');
    $('#Guide').hide()
 }
 // hide / show objects based on stage
@@ -25,6 +28,7 @@ function showStage(step){
          alert("empty input file, please try again"); 
          // back to start
          initial();
+
       }
       // // test if img is an animated gif
       // var fs = require('fs')
@@ -33,7 +37,7 @@ function showStage(step){
 
 
       // credit to https://stackoverflow.com/questions/5802580/html-input-type-file-get-the-image-before-submitting-the-form
-      if (myImg.files && myImg.files[0]) {
+      else if (myImg[0].files && myImg[0].files[0]) {
          var reader = new FileReader();
          reader.onload = function (e) {
            $('#imagePreview')
