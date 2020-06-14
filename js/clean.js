@@ -254,8 +254,8 @@ function submit(){
          $.ajax({
             url : window.location.hostname + '/main.py',
             type: 'POST',
-            processData: false,
-            contentType: 'multipart/form-data',
+            processData: true,
+            contentType: false,
             data : fd,
             success: function(data){
                alert(data);
