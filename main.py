@@ -92,7 +92,7 @@ data = cgi.FieldStorage()
 
 
 # catch post request to server
-var stopRoute = False
+stopRoute = False
 isRequest = getInput('submit')
 if isRequest == 'True' :
    #post request
