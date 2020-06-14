@@ -80,25 +80,18 @@ def render_template(filename, **kwargs): #root = root
             
     print(myFile)
 
-def getInput(FieldStorage, *args): #returns the value of a bunch of key value pair, if not found, returns empty string//
-    inputs = []
-    eles = FieldStorage
-    for i in args:
-        inputs.append(str(eles.getfirst(i,None)))
-    return inputs
 data = cgi.FieldStorage()
-
-
-
 
 # catch post request to server
 stopRoute = False
-isRequest = getInput(data, 'submit')
+isRequest = data.getfirst('submit')
 # print(isRequest)
 if len(isRequest) != 0:
    #post request
    stopRoute = True
-   myImg, markerColor, backgroundColor = getInput('myImg', 'markerColor', 'backgroundColor')
+   myImg = data.getfirst('myImg')
+   markerColor = data.getfirst('markerColor')
+   backgroundColor = data.getfirst('backgroundColor')
    
    # test that non of them are None type
    if not(myImg and markerColor and backgroundColor):
