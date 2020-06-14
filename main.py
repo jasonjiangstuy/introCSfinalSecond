@@ -84,7 +84,7 @@ def getInput(FieldStorage, *args): #returns the value of a bunch of key value pa
     inputs = []
     eles = FieldStorage
     for i in args:
-        inputs.append(str(eles.getvalue(i,None)))
+        inputs.append(str(eles.getfirst(i,None)))
     return inputs
 data = cgi.FieldStorage()
 
