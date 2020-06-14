@@ -150,7 +150,6 @@ function showStage(step){
             
             reader.readAsDataURL(myImg.files[0]);
             $('#picture').click(function(){
-               this.preventDefault()
                location.reload()
             })
             drawnImage = true;
