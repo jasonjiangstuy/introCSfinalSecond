@@ -103,7 +103,8 @@ if isRequest == 'True' :
       #fails
       print('Bad Request, Missing Part of Request')
    else:
-      import handwriting
+      print(myImg, markerColor, backgroundColor)
+      #import handwriting
 
 
 #routes
