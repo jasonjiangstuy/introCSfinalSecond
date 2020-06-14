@@ -250,7 +250,7 @@ function submit(){
          console.log(fd);
          
          $.ajax({
-            url : 'main.py',
+            url : window.location.hostname + '/main.py',
             type: 'POST',
             processData: false,
             contentType: 'multipart/form-data',
