@@ -78,12 +78,12 @@ function eyeDropper(which){
                         });
       }else{
          alert('That function isn\'t allowed')
-         print(stage)
+         console.log(stage);
          return
       }
    }else{
       alert('That function isn\'t allowed at this stage')
-      print(stage)
+      console.log(stage)
       return
    }
    $('#dropper').hide('slow');
@@ -164,13 +164,27 @@ function showStage(step){
       // send ajax method to sever
       $('#dropper').hide('slow');   
       $('#finalSubmit').show('slow')
+      $('submit').one('click', function(e) {
+         submit();
+      });
+      
    }
    // testing remove later
    else{
       initial()
    }
 }
-function move(step){
+function move(step, stop=false){
+   if (stop){
+      if (!backgroundColorFinal){
+         alert('Please give us the background color')
+         throw 'Stop step foward'
+      }
+      if (!markerColorFinal){
+         alert('Please give us the marker color')
+         throw 'Stop step foward'
+      }
+   }
    showStage(step)   
 }
 
