@@ -152,7 +152,7 @@ def removeHandwriting():
     newImg.show()
     # newImg.save('after.jpg')
             
-
+removeHandwriting()
 
 
     
