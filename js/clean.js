@@ -33,7 +33,7 @@ function eyeDropperMoveAction(e, which, me){
 
 function eyeDropperFinal(e, which, me){
    console.log(which);
-   var pixelData = this.getContext('2d').getImageData(e.offsetX, e.offsetY, 1, 1).data;
+   var pixelData = me.getContext('2d').getImageData(e.offsetX, e.offsetY, 1, 1).data;
    $('#currentColor').css("background-color", 'rgba('+ pixelData[0] + ','+ pixelData[1] +','+ pixelData[2] + ','+ pixelData[3] +')');
    if (which == 0){
       // marker
