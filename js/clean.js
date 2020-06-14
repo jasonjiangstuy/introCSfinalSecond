@@ -149,7 +149,10 @@ function showStage(step){
             };
             
             reader.readAsDataURL(myImg.files[0]);
-            $('#picture').click(location.reload)
+            $('#picture').click(function(){
+               this.preventDefault()
+               location.reload()
+            })
             drawnImage = true;
          }else{
             second()
