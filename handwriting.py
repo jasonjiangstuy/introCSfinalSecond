@@ -5,6 +5,7 @@ from io import BytesIO
 from PIL import ImageFilter
 from PIL import ImageEnhance
 import numpy as np
+import math
 
 
 # globals
@@ -132,7 +133,7 @@ def removeHandwriting():
     # for i in myletterFrequences.values():
     #     print(len(i[1]))
 
-    tolerance = 50
+    tolerance = 30
 
     # create new image to save the typed words to
 
@@ -146,13 +147,18 @@ def removeHandwriting():
         if v[0] < tolerance:
             #doesnt pass tolerance of frequences
             continue
+        elif v[0] == 3:
+            continue
         else:
             right = max(v[1])
             left = min(v[2])
             high = min(v[3])
+
+            bufferhigh = math.ceil((high - k) * 3)
+            bufferlow = math.floor((high - k) * 5)
             # print(v[3])
             # print((left, high, right, k))
-            cut = img.crop( (left, high, right, k) )
+            cut = img.crop( (left, high +  bufferhigh, right, k - bufferlow))
             # raise ValueError()
             newImg.paste(cut, (left, high))
             # print('test')
