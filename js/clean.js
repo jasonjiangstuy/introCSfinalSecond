@@ -1,27 +1,84 @@
-
 $(document).ready(function(){
    initial();
 })
+
+var markerColorFinal
+var backgroundColorFinal
+var drawnImage = false;
 var stage = 0
 function second(){
-
+   // only show dropper
    $('#Guide').hide('slow');
    $('#submitImg').hide('slow');
    $('#dropper').show('slow');
+   $('#dropperPanel').hide('slow');
 }
 function initial(){
    // only show submit image
-   
    stage = 0
    console.log('stage:', stage);
    console.log('start or restart');
-   $('#Guide').hide('slow')
+   $('#Guide').hide()
+   $('#submitImg').show();
+   $('#dropper').hide();
+   $('#dropperPanel').hide();   
+}
+
+function eyeDropperMoveAction(e, which){
+   console.log(which);
+   var pixelData = this.getContext('2d').getImageData(event.offsetX, event.offsetY, 1, 1).data;
+   $('#currentColor').css("background-color", 'rgba('+ pixelData[0] + ','+ pixelData[1] +','+ pixelData[2] + ','+ pixelData[3] +')');
+
+}
+
+function eyeDropperFinal(which){
+   console.log(which);
+   var pixelData = this.getContext('2d').getImageData(event.offsetX, event.offsetY, 1, 1).data;
+   $('#currentColor').css("background-color", 'rgba('+ pixelData[0] + ','+ pixelData[1] +','+ pixelData[2] + ','+ pixelData[3] +')');
+   if (which == 0){
+      // marker
+      $('#markerColor').css("background-color", 'rgba('+ pixelData[0] + ','+ pixelData[1] +','+ pixelData[2] + ','+ pixelData[3] +')');
+      markerColorFinal = pixelData
+      console.log(pixelData); // figure out how to convert later
+   }else if (which == 1){
+      // background color
+      $('#backColor').css("background-color", 'rgba('+ pixelData[0] + ','+ pixelData[1] +','+ pixelData[2] + ','+ pixelData[3] +')');
+      markerColorFinal = pixelData
+      console.log(pixelData);
+      
+   }else{
+      alert('That function isn\'t allowed')
+      return
+   }
+}
+
+function eyeDropper(which){
+   if (stage == 2){
+      // marker color
+      if (which == 0){
+         $('#DropperHeading').text('Pick the Marker Color to Continue')
+         $('#mainCanvas').off('mousemove')
+                        .mousemove(eyeDropperMoveAction(e, which))
+                        .one('click', eyeDropperFinal(e, which));
+      }
+      // background color
+      else if (which == 1){
+         $('#DropperHeading').text('Pick the Background Color to Continue')
+      }else{
+         alert('That function isn\'t allowed')
+         return
+      }
+   }else{
+      alert('That function isn\'t allowed at this stage')
+      return
+   }
    $('#dropper').hide('slow');
-   $('#submitImg').show('slow');
+   $('#dropperPanel').show('slow');   
+   
 }
 // hide / show objects based on stage
 
-var drawnImage = false;
+
 function showStage(step){ 
 
    stage = stage + step
@@ -43,8 +100,6 @@ function showStage(step){
       // var fs = require('fs')
       // , animated = require('animated-gif-detector');
 
-
-
       else if (myImg[0].files && myImg[0].files[0] && FileReader) {
          if (!drawnImage){
             myImg = myImg[0] // change to native js
@@ -57,14 +112,7 @@ function showStage(step){
                   canvas.height = blockSprite.height; 
                   console.log(canvas);
                   c = canvas.getContext('2d')
-
-                  
                   c.drawImage(blockSprite, 0, 0, blockSprite.width, blockSprite.height);
-                  document.body.appendChild(blockSprite);
-                  
-                     
-                     
-                     
                  
                }
                blockSprite.setAttribute("src", e.target.result); 
@@ -82,10 +130,6 @@ function showStage(step){
          }else{
             second()
          }
-         
-         
-
-         
          
        }
       else{
@@ -105,6 +149,7 @@ function showStage(step){
 function move(step){
    showStage(step)   
 }
+
 
 var guide = false
 function toggleGuide(){
@@ -130,6 +175,9 @@ function toggleGuide(){
    }
       
 }
+
+
+
 
 
 $("#form").submit(function(event){ 
