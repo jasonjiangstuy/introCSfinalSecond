@@ -86,7 +86,7 @@ data = cgi.FieldStorage()
 stopRoute = False
 isRequest = data.getfirst('submit')
 # print(isRequest)
-if len(isRequest) != 0:
+if isRequest:
    #post request
    stopRoute = True
    myImg = data.getfirst('myImg')
