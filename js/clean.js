@@ -131,11 +131,11 @@ function showStage(step){
               var blockSprite = document.createElement("IMG");
               blockSprite.onload = function(){
                   var canvas = $('#mainCanvas')[0]
-                  canvas.width = blockSprite.width;
-                  canvas.height = blockSprite.height; 
+                  canvas.style.width = 'inherit';
+                  canvas.style.height = '65vh'; 
                   console.log(canvas);
                   c = canvas.getContext('2d')
-                  c.drawImage(blockSprite, 0, 0, blockSprite.width, blockSprite.height);
+                  c.drawImage(blockSprite, 0, 0, canvas.width, canvas.height);
                  
                }
                blockSprite.setAttribute("src", e.target.result); 
