@@ -58,8 +58,10 @@ function eyeDropper(which){
       if (which == 0){
          $('#DropperHeading').text('Pick the Marker Color to Continue')
          $('#mainCanvas').off('mousemove')
-                        .mousemove(eyeDropperMoveAction(e, which))
-                        .one('click', eyeDropperFinal(e, which));
+                        .mousemove(function(e) {eyeDropperMoveAction(e, which)})
+                        .one('click', function(e) {
+                           eyeDropperFinal(e, which);
+                        };
       }
       // background color
       else if (which == 1){
