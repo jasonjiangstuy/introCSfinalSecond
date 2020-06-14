@@ -53,7 +53,7 @@ function eyeDropperFinal(which){
 }
 
 function eyeDropper(which){
-   if (stage == 2){
+   if (stage == 1){
       // marker color
       if (which == 0){
          $('#DropperHeading').text('Pick the Marker Color to Continue')
