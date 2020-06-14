@@ -46,7 +46,7 @@ function eyeDropperFinal(e, which, me){
    }else if (which == 1){
       // background color
       $('#backColor').css("background-color", 'rgba('+ pixelData[0] + ','+ pixelData[1] +','+ pixelData[2] + ','+ pixelData[3] +')');
-      markerColorFinal = pixelData
+      backgroundColorFinal = pixelData
       console.log(pixelData);
       move(0)
    }else{
