@@ -13,12 +13,14 @@ function second(){
    $('#submitImg').hide('slow');
    $('#dropper').show('slow');
    $('#dropperPanel').hide('slow');
+   $('#finalSubmit').hide()
 }
 function initial(){
    // only show submit image
    stage = 0
    console.log('stage:', stage);
    console.log('start or restart');
+   $('#finalSubmit').hide()
    $('#Guide').hide()
    $('#submitImg').show();
    $('#dropper').hide();
@@ -85,7 +87,8 @@ function eyeDropper(which){
       return
    }
    $('#dropper').hide('slow');
-   $('#dropperPanel').show('slow');   
+   $('#dropperPanel').show('slow');
+      
    
 }
 // hide / show objects based on stage
