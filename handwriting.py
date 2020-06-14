@@ -6,15 +6,13 @@ from PIL import ImageFilter
 from PIL import ImageEnhance
 import numpy as np
 
-<<<<<<< HEAD
-=======
+
 # globals
 
 #all black pixels that have been found
 foundAlready = {}
 # The image
 blackAndWhite = None
->>>>>>> 0ead75705626013da61c5e10e2555b929dabd54b
 #to identify the connected black letters from the top right corner -> first left
 
 def findSurrounding(startCoord, letterObject):
