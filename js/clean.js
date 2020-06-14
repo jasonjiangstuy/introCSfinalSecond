@@ -227,7 +227,7 @@ function submit(){
       console.log(markerColorFinal);
       console.log(backgroundColorFinal);
       
-
+      fd.append('submit', 'True')
       fd.append('myImg',files);
       fd.append('markerColor', markerColorFinal)
       fd.append('backgroundColor', backgroundColorFinal)
@@ -239,9 +239,10 @@ function submit(){
          $.ajax({
             url : main.py,
             type: POST,
+            contentType: 'multipart/form-data',
             data : fd
          }).done(function(response){ //work on feedback div later
-            $('#responseBox').html(response)
+            alert(response)
          })
       }else{
          throw 'missing component of submission, aborting'
