@@ -102,7 +102,8 @@ if isRequest:
       #print(markerColor, backgroundColor)
       # credits
       import io
-      buf = io.BytesIO(myImg)
+      import base64
+      buf = io.BytesIO(base64.b64decode(myImg))
       #base 64 -> file object that is ready for PIL
       import handwriting
 
@@ -110,7 +111,6 @@ if isRequest:
       finalProccessed = handwriting.removeHandwriting(buf)
 
       #convert PIL image to base 64
-      import base64
       buffered = BytesIO()
       finalProccessed.save(buffered, format="JPEG")
       img_str = base64.b64encode(buffered.getvalue())
