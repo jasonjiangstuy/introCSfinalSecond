@@ -24,16 +24,16 @@ function initial(){
    $('#dropperPanel').hide();   
 }
 
-function eyeDropperMoveAction(e, which){
+function eyeDropperMoveAction(e, which, me){
    console.log(which);
-   var pixelData = this.getContext('2d').getImageData(event.offsetX, event.offsetY, 1, 1).data;
+   var pixelData = me.getContext('2d').getImageData(e.offsetX, e.offsetY, 1, 1).data;
    $('#currentColor').css("background-color", 'rgba('+ pixelData[0] + ','+ pixelData[1] +','+ pixelData[2] + ','+ pixelData[3] +')');
 
 }
 
-function eyeDropperFinal(which){
+function eyeDropperFinal(e, which, me){
    console.log(which);
-   var pixelData = this.getContext('2d').getImageData(event.offsetX, event.offsetY, 1, 1).data;
+   var pixelData = this.getContext('2d').getImageData(e.offsetX, e.offsetY, 1, 1).data;
    $('#currentColor').css("background-color", 'rgba('+ pixelData[0] + ','+ pixelData[1] +','+ pixelData[2] + ','+ pixelData[3] +')');
    if (which == 0){
       // marker
@@ -58,9 +58,9 @@ function eyeDropper(which){
       if (which == 0){
          $('#DropperHeading').text('Pick the Marker Color to Continue')
          $('#mainCanvas').off('mousemove')
-                        .mousemove(function(e) {eyeDropperMoveAction(e, which)})
+                        .mousemove(function(e) {eyeDropperMoveAction(e, which, this)})
                         .one('click', function(e) {
-                           eyeDropperFinal(e, which);
+                           eyeDropperFinal(e, which, this);
                         });
       }
       // background color
