@@ -99,7 +99,7 @@ if isRequest == 'True' :
    # test that non of them are None type
    if not(myImg and markerColor and backgroundColor):
       #fails
-      return('Bad Request, Missing Part of Request')
+      print('Bad Request, Missing Part of Request')
    else:
       import handwriting
 
