@@ -255,7 +255,7 @@ function submit(){
             url : window.location.hostname + '/main.py',
             type: 'POST',
             processData: false,
-            contentType: 'multipart/form-data',
+            contentType: false,
             data : fd,
             success: function(data){
                alert(data);

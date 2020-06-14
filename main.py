@@ -94,8 +94,8 @@ data = cgi.FieldStorage()
 # catch post request to server
 stopRoute = False
 isRequest = getInput('submit')
-print(isRequest)
-if isRequest == 'True' :
+# print(isRequest)
+if len(isRequest) != 0:
    #post request
    stopRoute = True
    myImg, markerColor, backgroundColor = getInput('myImg', 'markerColor', 'backgroundColor')
