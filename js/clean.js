@@ -162,7 +162,7 @@ function showStage(step){
       return
    }else if(stage == 3){
       // send ajax method to sever
-      $('#dropperPanel').hide('slow');   
+      $('#dropper').hide('slow');   
       $('#finalSubmit').show('slow')
    }
    // testing remove later
@@ -234,7 +234,7 @@ function submit(){
            
 
       if (go){
-         var fd = $(this).serialize(); //Encode form elements for submission
+         // var fd = $(this).serialize(); //Encode form elements for submission
          console.log(fd);
          
          $.ajax({
