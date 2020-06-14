@@ -86,7 +86,7 @@ a {
 
 .menubar {
     width: 100%;
-    height: 8vh;
+    height: auto;
     /* min-width: 665px;
     max-width: 1980px; */
     padding: 0;
@@ -101,6 +101,7 @@ a {
     margin-right: auto;
     z-index: 1;
     text-align: center;
+    font-size: 1.1vw;
 }
 .left_options {
     float: left;
