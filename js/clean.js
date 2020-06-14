@@ -237,8 +237,8 @@ function submit(){
          var fd = $(this).serialize(); //Encode form elements for submission
          
          $.ajax({
-            url : main.py,
-            type: POST,
+            url : 'main.py',
+            type: 'POST',
             contentType: 'multipart/form-data',
             data : fd
          }).done(function(response){ //work on feedback div later

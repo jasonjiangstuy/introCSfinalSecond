@@ -92,9 +92,11 @@ data = cgi.FieldStorage()
 
 
 # catch post request to server
+var stopRoute = False
 isRequest = getInput('submit')
 if isRequest == 'True' :
    #post request
+   stopRoute = True
    myImg, markerColor, backgroundColor = getInput('myImg', 'markerColor', 'backgroundColor')
    # test that non of them are None type
    if not(myImg and markerColor and backgroundColor):
@@ -105,7 +107,7 @@ if isRequest == 'True' :
 
 
 #routes
-if 'PATH_INFO' in os.environ.keys():
+if 'PATH_INFO' in os.environ.keys() and not stopRoute:
    path = str(os.environ['PATH_INFO'])
    #print(path.split('/')[1:])
    pathParts = path.split('/')[1:]
