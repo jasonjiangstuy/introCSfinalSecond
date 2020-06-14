@@ -12,26 +12,8 @@
         
         <!-- navbar -->
         {{include 'navbar.html'}}
-            <div id='formArea'>
-                <div id='responseBox'></div>
-                <span id='heading'>Login</span>
-                <form id='form' action="main.py" method="GET">
-                    <input id='whichForm' name='whichForm' type="text" style='display: none;'value="Login">
-                    <label class='email' for="email">Email:</label><br  class="email">
-                    <input type="text" id='email' class="email" name="email"><br  class="email">
 
-                    <label for="username">Username:</label><br>
-                    <input type="text" id="username" name="username"><br>
-                    <label for="pwd">Password:</label><br>
-                    <input type="password" id="pwd" name="pwd"><br>
-                    <label class='cpwd' for="cpwd">ConfirmPassword:</label><br class='cpwd'>
-                    <input type="password" class='cpwd' id="cpwd" name="cpwd"><br class='cpwd'>
-                    <button id='submit' type="submit">SignIn</button>
-                </form>
 
-                <span id='switch' onclick="switchNew()">New User</span>
-                <span id='forgotPwd'> I forgot my passward</span>
-            </div>
 
     </body>
 </html> 

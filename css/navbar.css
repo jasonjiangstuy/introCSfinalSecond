@@ -86,7 +86,7 @@ a {
 
 .menubar {
     width: 100%;
-    height: auto;
+    height: 8vh;
     /* min-width: 665px;
     max-width: 1980px; */
     padding: 0;
