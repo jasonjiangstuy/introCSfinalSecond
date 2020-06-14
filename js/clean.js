@@ -235,6 +235,7 @@ function submit(){
 
       if (go){
          var fd = $(this).serialize(); //Encode form elements for submission
+         console.log(fd);
          
          $.ajax({
             url : 'main.py',
