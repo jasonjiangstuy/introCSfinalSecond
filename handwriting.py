@@ -6,6 +6,15 @@ from PIL import ImageFilter
 from PIL import ImageEnhance
 import numpy as np
 
+<<<<<<< HEAD
+=======
+# globals
+
+#all black pixels that have been found
+foundAlready = {}
+# The image
+blackAndWhite = None
+>>>>>>> 0ead75705626013da61c5e10e2555b929dabd54b
 #to identify the connected black letters from the top right corner -> first left
 
 def findSurrounding(startCoord, letterObject):
@@ -70,6 +79,7 @@ def removeHandwriting():
     # img.save('before.jpg')
     #credit to https://predictivehacks.com/iterate-over-image-pixels/ to show how to iterate in PIL
     # greyscale
+    global blackAndWhite 
     blackAndWhite = img.convert("L")
 
     for x in range(img.width):
@@ -86,8 +96,7 @@ def removeHandwriting():
 
     #now iterating through each row, looking for letters
 
-    #all black pixels that have been found
-    foundAlready = {}
+
 
     #found letters
 
@@ -150,7 +159,7 @@ def removeHandwriting():
     newImg.show()
     # newImg.save('after.jpg')
             
-
+removeHandwriting()
 
 
     

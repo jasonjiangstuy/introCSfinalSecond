@@ -43,25 +43,25 @@
                         <table>
                            <tr>
                               <td>
-                                 Choose Marker Color \/:
+                                 Choose Marker Color Below:
                               </td>
                               <td>
-                                 Choose Background Color \/:
+                                 Choose Background Color Below:
                               </td>
                            </tr>
                            <tr>
                               <td>
-                                 <div id='markerColor' onclick="" class='selectors'></div>
+                                 <div id='markerColor' onclick="eyeDropper(0)" class='selector'></div>
                               </td>
                               <td>
-                                 <div id='backColor' class='selectors'></div>
+                                 <div id='backColor' onclick="eyeDropper(1)"class='selector'></div>
                               </td>
                            </tr>
                            <tr>
                               <td>
                         <button onclick="move(-1)">Previous</button> 
                      </td><td>
-                        <button onclick="move(1)">Next</button> 
+                        <button onclick="move(1, true)">Next</button> 
                      </td>
                      </tr>
                         </table>
@@ -70,7 +70,7 @@
 
 
          </div>
-         <div id='dropperPanel'>
+         <div class='mainBoxes' id='dropperPanel'>
             <span id='DropperHeading'></span>
             <canvas id='mainCanvas'></canvas>
             <div id='currentColorContainer'>
@@ -78,6 +78,13 @@
                <div id='currentColor'></div>               
             </div>
          </div>
+
+         <div class='mainBoxes' id='finalSubmit'>
+            <span id='heading'>Its Time to Clean Your Work</span>
+            <button id='submit'>Submit</button>
+
+         </div>
+
 
             <div id="Guide">
                <h1>

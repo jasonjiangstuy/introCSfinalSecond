@@ -6,46 +6,51 @@ var markerColorFinal
 var backgroundColorFinal
 var drawnImage = false;
 var stage = 0
+
 function second(){
    // only show dropper
    $('#Guide').hide('slow');
    $('#submitImg').hide('slow');
    $('#dropper').show('slow');
    $('#dropperPanel').hide('slow');
+   $('#finalSubmit').hide()
 }
 function initial(){
    // only show submit image
    stage = 0
    console.log('stage:', stage);
    console.log('start or restart');
+   $('#finalSubmit').hide()
    $('#Guide').hide()
    $('#submitImg').show();
    $('#dropper').hide();
    $('#dropperPanel').hide();   
 }
 
-function eyeDropperMoveAction(e, which){
+function eyeDropperMoveAction(e, which, me){
    console.log(which);
-   var pixelData = this.getContext('2d').getImageData(event.offsetX, event.offsetY, 1, 1).data;
+   var pixelData = me.getContext('2d').getImageData(e.offsetX, e.offsetY, 1, 1).data;
    $('#currentColor').css("background-color", 'rgba('+ pixelData[0] + ','+ pixelData[1] +','+ pixelData[2] + ','+ pixelData[3] +')');
 
 }
 
-function eyeDropperFinal(which){
+function eyeDropperFinal(e, which, me){
    console.log(which);
-   var pixelData = this.getContext('2d').getImageData(event.offsetX, event.offsetY, 1, 1).data;
+   var pixelData = me.getContext('2d').getImageData(e.offsetX, e.offsetY, 1, 1).data;
    $('#currentColor').css("background-color", 'rgba('+ pixelData[0] + ','+ pixelData[1] +','+ pixelData[2] + ','+ pixelData[3] +')');
    if (which == 0){
       // marker
       $('#markerColor').css("background-color", 'rgba('+ pixelData[0] + ','+ pixelData[1] +','+ pixelData[2] + ','+ pixelData[3] +')');
       markerColorFinal = pixelData
       console.log(pixelData); // figure out how to convert later
+      move(0)
+
    }else if (which == 1){
       // background color
       $('#backColor').css("background-color", 'rgba('+ pixelData[0] + ','+ pixelData[1] +','+ pixelData[2] + ','+ pixelData[3] +')');
-      markerColorFinal = pixelData
+      backgroundColorFinal = pixelData
       console.log(pixelData);
-      
+      move(0)
    }else{
       alert('That function isn\'t allowed')
       return
@@ -53,27 +58,37 @@ function eyeDropperFinal(which){
 }
 
 function eyeDropper(which){
-   if (stage == 2){
+   if (stage == 1){
       // marker color
       if (which == 0){
          $('#DropperHeading').text('Pick the Marker Color to Continue')
          $('#mainCanvas').off('mousemove')
-                        .mousemove(eyeDropperMoveAction(e, which))
-                        .one('click', eyeDropperFinal(e, which));
+                        .mousemove(function(e) {eyeDropperMoveAction(e, which, this)})
+                        .one('click', function(e) {
+                           eyeDropperFinal(e, which, this);
+                        });
       }
       // background color
       else if (which == 1){
          $('#DropperHeading').text('Pick the Background Color to Continue')
+         $('#mainCanvas').off('mousemove')
+                        .mousemove(function(e) {eyeDropperMoveAction(e, which, this)})
+                        .one('click', function(e) {
+                           eyeDropperFinal(e, which, this);
+                        });
       }else{
          alert('That function isn\'t allowed')
+         console.log(stage);
          return
       }
    }else{
       alert('That function isn\'t allowed at this stage')
+      console.log(stage)
       return
    }
    $('#dropper').hide('slow');
-   $('#dropperPanel').show('slow');   
+   $('#dropperPanel').show('slow');
+      
    
 }
 // hide / show objects based on stage
@@ -141,12 +156,35 @@ function showStage(step){
       
 
    }
-   // testing
-   else{
+   else if(stage == 2){
+      //allow user to change variables// work in progress
+      move(1)
+      return
+   }else if(stage == 3){
+      // send ajax method to sever
+      $('#dropper').hide('slow');   
+      $('#finalSubmit').show('slow')
+      $('#submit')//.one('click', submit);
+                  .click(submit);
+                  //testing
+      
+   }
+   // testing remove later
+   else{//#endregion
       initial()
    }
 }
-function move(step){
+function move(step, stop=false){
+   if (stop){
+      if (!backgroundColorFinal){
+         alert('Please give us the background color')
+         throw 'Stop step foward'
+      }
+      if (!markerColorFinal){
+         alert('Please give us the marker color')
+         throw 'Stop step foward'
+      }
+   }
    showStage(step)   
 }
 
@@ -179,27 +217,59 @@ function toggleGuide(){
 
 
 
+function submit(){
+   //credit to https://www.sanwebe.com/2016/07/ajax-form-submit-examples-using-jquery
+      // check all items are filled
+      var go = true
+      if (!markerColorFinal || markerColorFinal == ''){
+         go = false;
+         alert('You have not specified the marker color, aborting')
+      }
+      if (!backgroundColorFinal || backgroundColorFinal == ''){
+         go = false;
+         alert('You have not specified the background color, aborting')
+      }
 
-$("#form").submit(function(event){ 
-//credit to https://www.sanwebe.com/2016/07/ajax-form-submit-examples-using-jquery
-   event.preventDefault(); //prevent default action 
-   var passward = $('#pwd').val()
-   var cpassward = $('#cpwd').val()
-   if (passward == cpassward){
-       var post_url = $(this).attr("action"); //get form action url
-       var request_method = $(this).attr("method"); //get form GET/POST method
-       var form_data = $(this).serialize(); //Encode form elements for submission
-       
-       $.ajax({
-           url : main.py,
-           type: POST,
-           data : form_data
-       }).done(function(response){ //work on feedback div later
-           $('#responseBox').html(response)
-       })
-   }else{
-       $('#responseBox').html('Passwards must match. Please Try Again')
-       
-   }
+      var files = $('#picture')[0].files[0];
 
-});
+      if (!files){
+         go = false;
+      }
+
+      var fd = new FormData();
+
+      console.log(markerColorFinal);
+      console.log(backgroundColorFinal);
+      
+      fd.append('submit', 'True')
+      fd.append('myImg',files);
+      fd.append('markerColor', markerColorFinal)
+      fd.append('backgroundColor', backgroundColorFinal)
+           
+
+      if (go){
+         // var fd = $(this).serialize(); //Encode form elements for submission
+         console.log(fd);
+         
+         $.ajax({
+            url : window.location.hostname + '/main.py',
+            type: 'POST',
+            processData: false,
+            contentType: 'multipart/form-data',
+            data : fd,
+            success: function(data){
+               alert(data);
+            },
+            error: function(textStatus, error){
+               alert(textStatus, error);
+            }
+         }).done(function(response){ //work on feedback div later
+            console.log('request complete');
+            
+         })
+      }else{
+         throw 'missing component of submission, aborting'
+         
+      }
+
+}

@@ -31,6 +31,9 @@ import cgi
 import cgitb
 cgitb.enable(display=0, logdir='./logdir')
 
+
+
+
 #functions -------------------------------
 def render_template(filename, **kwargs): #root = root
     #given filename in this directory
@@ -81,55 +84,32 @@ def getInput(FieldStorage, *args): #returns the value of a bunch of key value pa
     inputs = []
     eles = FieldStorage
     for i in args:
-        inputs.append(str(eles.getfirst(i,'')))
+        inputs.append(str(eles.getfirst(i,None)))
     return inputs
 data = cgi.FieldStorage()
-# app routes --------------------------------------------------------------------------------
-
-
-#original DB
-# import pickle
-
-# def GetDB(): #get info from DB / makes the DB + return empty dict
-#     #{username: {email: blahblah, pwd: blahblah}}
-
-#     os.chdir('/home/students/2022/jjiang20')
-#     if os.path.exists('IntroFinalDB.p'):
-#         f = open('IntroFinalDB.p', 'rb')
-#         masterDB = pickle.load(f)
-#         f.close()
-#     else:
-#         masterDB = {}
-#         f = open('IntroFinalDB.p', 'wb+')
-#         pickle.dump(masterDB, f)
-#         f.close()
-#     return masterDB
-#idk if its needed
-# def GetEmails(): #get list of emails that are linked with accounts
-#     os.chdir('/home/students/2022/jjiang20')
-#     if os.path.exists('IntroFinalEmailDB.p'):
-#         f = open('IntroFinalDB.p', 'rb')
-#         emailDB = pickle.load(f)
-#         f.close()
-#     else:
-#         emailDB = []
-#         f = open('IntroFinalEmailDB.p', 'wb+')
-#         pickle.dump(emailDB, f)
-#         f.close()
-#     return emailDB
-
-
-#figuring out the requested path 
-# ~/jjiang20@moe.stuy.edu/main.py?path=login/game
 
 
 
-# steps = path.split('/')
-# for i in steps: #going down the path
-#     if i == 'login':
-#         render_template('login.html')
-# if there is a path
-if 'PATH_INFO' in os.environ.keys():
+
+# catch post request to server
+stopRoute = False
+isRequest = getInput('submit')
+print(isRequest)
+if isRequest == 'True' :
+   #post request
+   stopRoute = True
+   myImg, markerColor, backgroundColor = getInput('myImg', 'markerColor', 'backgroundColor')
+   # test that non of them are None type
+   if not(myImg and markerColor and backgroundColor):
+      #fails
+      print('Bad Request, Missing Part of Request')
+   else:
+      print(myImg, markerColor, backgroundColor)
+      #import handwriting
+
+
+#routes
+if 'PATH_INFO' in os.environ.keys() and not stopRoute:
    path = str(os.environ['PATH_INFO'])
    #print(path.split('/')[1:])
    pathParts = path.split('/')[1:]
@@ -147,44 +127,3 @@ if 'PATH_INFO' in os.environ.keys():
 else:
    render_template('home.html')
 
-
-# #get login info --------------- // change to match mangodb
-# [whichForm] = getInput(data, 'whichForm')
-# if whichForm != '':
-#     if whichForm == 'Login':
-#         [username, passward] = getInput(data, 'username', 'pwd')
-#          #check if its in the DB
-#         if (users.count_documents({'username':username, 'password': password}) > 0):
-#             #success
-#             print('success')
-#         else:
-#             #fail
-#             print('theses Credientials don\'t match our records\nplease try again')
-
-#     elif whichForm == 'NewUsers':
-#         [email, username, passward, cpassward] = getInput(data, 'email', 'username', 'pwd', 'cpwd')
-#         if passward != cpassward:
-#             print('Bad Login/Signup Request, passwards don\'t match')
-#             ValueError('Passwards dont match, wasn\'t stopped by JS')
-#         else:
-#             if not (users.count_documents({'username':username}) > 0): #is username taken
-#                 if not (users.count_documents({'email':email}) > 0): #is email taken
-#                     users.insert_one({
-#                         'username':username,
-#                         'password':password,
-#                         'email':email,
-#                         'groups':[]
-#                         })
-#                     print('success')
-#                 else:
-#                     #fail
-#                     print('this email has been taken\nplease try again')
-#             else:
-#                 #fail
-#                 print('this username has been taken\nplease try again')
-#     else:
-#         print('Bad Login/Signup Request')
-#         ValueError('Bad Login/Signup Request')
-   
-
- # testing for vals of keys
