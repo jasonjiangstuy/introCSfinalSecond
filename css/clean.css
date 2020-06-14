@@ -29,6 +29,10 @@ form{
    background-color: white;
 }
 
+#currentColor{
+   height: 3em;
+   width: 3em;
+}
 .mainBoxes{
     text-align: left;
     width: 11em;
