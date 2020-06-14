@@ -98,8 +98,13 @@ if isRequest:
       #fails
       print('Bad Request, Missing Part of Request')
    else:
-      print(myImg, markerColor, backgroundColor)
-      #import handwriting
+      # print(myImg, markerColor, backgroundColor)
+      # credits
+      import io
+      buf = io.BytesIO(myImg)
+      # file object that is ready for PIL
+      import handwriting
+      
 
 
 #routes
