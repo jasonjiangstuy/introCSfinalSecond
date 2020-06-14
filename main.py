@@ -99,6 +99,7 @@ if isRequest:
       print('Bad Request, Missing Part of Request')
    else:
       # print(myImg, markerColor, backgroundColor)
+      print(markerColor, backgroundColor)
       # credits
       import io
       buf = io.BytesIO(myImg)
