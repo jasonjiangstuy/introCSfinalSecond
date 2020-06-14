@@ -68,6 +68,11 @@ function eyeDropper(which){
       // background color
       else if (which == 1){
          $('#DropperHeading').text('Pick the Background Color to Continue')
+         $('#mainCanvas').off('mousemove')
+                        .mousemove(function(e) {eyeDropperMoveAction(e, which, this)})
+                        .one('click', function(e) {
+                           eyeDropperFinal(e, which, this);
+                        });
       }else{
          alert('That function isn\'t allowed')
          print(stage)
