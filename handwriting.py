@@ -6,8 +6,6 @@ from PIL import ImageFilter
 from PIL import ImageEnhance
 import numpy as np
 
-
-
 #to identify the connected black letters from the top right corner -> first left
 
 def findSurrounding(startCoord, letterObject):
