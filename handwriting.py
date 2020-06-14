@@ -70,11 +70,11 @@ class myletter():
         return leftest, rightest, lowest, highest
 
             
-def removeHandwriting():
+def removeHandwriting(fileObj):
     # URL = "https://www.timeanddate.com/scripts/cityog.php?title=Current%20Local%20Time%20in&amp;city=New%20York&amp;state=New%20York&amp;country=USA&amp;image=new-york1"
     # response = requests.get(URL)
     # img = Image.open(BytesIO(response.content))
-    img = Image.open('Annotation 2020-06-08 012506.jpg')
+    img = Image.open(fileObj)
     # img.save('before.jpg')
     #credit to https://predictivehacks.com/iterate-over-image-pixels/ to show how to iterate in PIL
     # greyscale
@@ -93,7 +93,7 @@ def removeHandwriting():
                 # set to white
                 blackAndWhite.putpixel( (x,y) ,255)
 
-    blackAndWhite.show()
+   #  blackAndWhite.show()
 
 
     #now iterating through each row, looking for letters
@@ -163,10 +163,9 @@ def removeHandwriting():
             newImg.paste(cut, (left, high))
             # print('test')
 
-    newImg.show()
+    return(newImg)
     # newImg.save('after.jpg')
-            
-removeHandwriting()
+
 
 
     

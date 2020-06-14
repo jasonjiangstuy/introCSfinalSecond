@@ -99,12 +99,24 @@ if isRequest:
       print('Bad Request, Missing Part of Request')
    else:
       # print(myImg, markerColor, backgroundColor)
-      print(markerColor, backgroundColor)
+      #print(markerColor, backgroundColor)
       # credits
       import io
       buf = io.BytesIO(myImg)
-      # file object that is ready for PIL
+      #base 64 -> file object that is ready for PIL
       import handwriting
+
+      #do proccessing
+      finalProccessed = handwriting.removeHandwriting(buf)
+
+      #convert PIL image to base 64
+      import base64
+      buffered = BytesIO()
+
+
+      finalProccessed.save(buffered, format="JPEG")
+      img_str = base64.b64encode(buffered.getvalue())
+      print(img_str)
       
 
 
@@ -125,5 +137,6 @@ if 'PATH_INFO' in os.environ.keys() and not stopRoute:
    else:
       render_template('home.html')
 else:
-   render_template('home.html')
+   if not stopRoute:
+      render_template('home.html')
 
