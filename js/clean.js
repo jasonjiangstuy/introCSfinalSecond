@@ -149,6 +149,7 @@ function showStage(step){
             };
             
             reader.readAsDataURL(myImg.files[0]);
+            $('#picture').click(location.reload)
             drawnImage = true;
          }else{
             second()
