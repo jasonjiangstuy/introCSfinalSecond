@@ -254,9 +254,16 @@ function submit(){
             type: 'POST',
             processData: false,
             contentType: 'multipart/form-data',
-            data : fd
+            data : fd,
+            success: function(data){
+               alert(data);
+            },
+            error: function(textStatus, error){
+               alert(textStatus, error);
+            }
          }).done(function(response){ //work on feedback div later
-            alert(response)
+            console.log('request complete');
+            
          })
       }else{
          throw 'missing component of submission, aborting'

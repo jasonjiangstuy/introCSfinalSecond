@@ -94,6 +94,7 @@ data = cgi.FieldStorage()
 # catch post request to server
 stopRoute = False
 isRequest = getInput('submit')
+print(isRequest)
 if isRequest == 'True' :
    #post request
    stopRoute = True
