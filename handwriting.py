@@ -78,7 +78,10 @@ def removeHandwriting():
     #credit to https://predictivehacks.com/iterate-over-image-pixels/ to show how to iterate in PIL
     # greyscale
     global blackAndWhite 
-    blackAndWhite = img.convert("L")
+    enhancer = ImageEnhance.Color(img)
+    blackAndWhite = enhancer.enhance(0.0)
+   #  print(blackAndWhite)
+    blackAndWhite = blackAndWhite.convert("L")
 
     for x in range(img.width):
         for y in range(img.height):
