@@ -48,8 +48,8 @@ function eyeDropperFinal(e, which, me){
       // marker
       $('#markerColor').css("background-color", 'rgba('+ pixelData[0] + ','+ pixelData[1] +','+ pixelData[2] + ','+ pixelData[3] +')');
       var hex = "#" + ("000000" + rgbToHex(pixelData[0], pixelData[1], pixelData[2])).slice(-6);
-      markerColorFinal = hex
-      console.log(pixelData); // figure out how to convert later
+      backgroundColorFinal = hex
+      console.log(backgroundColorFinal); // figure out how to convert later
       move(0)
 
    }else if (which == 1){
@@ -57,7 +57,7 @@ function eyeDropperFinal(e, which, me){
       $('#backColor').css("background-color", 'rgba('+ pixelData[0] + ','+ pixelData[1] +','+ pixelData[2] + ','+ pixelData[3] +')');
       var hex = "#" + ("000000" + rgbToHex(pixelData[0], pixelData[1], pixelData[2])).slice(-6);
       markerColorFinal = hex
-      console.log(pixelData);
+      console.log(markerColorFinal);
       move(0)
    }else{
       alert('That function isn\'t allowed')
