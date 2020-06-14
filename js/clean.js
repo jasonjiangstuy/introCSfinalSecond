@@ -162,7 +162,8 @@ function showStage(step){
       return
    }else if(stage == 3){
       // send ajax method to sever
-      submit();
+      $('#dropperPanel').hide('slow');   
+      $('#finalSubmit').show('slow')
    }
    // testing remove later
    else{
