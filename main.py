@@ -29,7 +29,7 @@ if 'SCRIPT_NAME' in os.environ.keys():
 import cgi
 
 import cgitb
-cgitb.enable(display=0, logdir='./logdir')
+cgitb.enable(display=0, logdir='../www/logdir')
 
 
 
