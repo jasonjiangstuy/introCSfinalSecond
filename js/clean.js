@@ -61,7 +61,7 @@ function eyeDropper(which){
                         .mousemove(function(e) {eyeDropperMoveAction(e, which)})
                         .one('click', function(e) {
                            eyeDropperFinal(e, which);
-                        };
+                        });
       }
       // background color
       else if (which == 1){
