@@ -36,6 +36,7 @@ form{
 .mainBoxes{
     text-align: left;
     width: 11em;
+    margin: 3em;
     min-height: 10em;
     padding: 1em;
     font-size: 1em;
