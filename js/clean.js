@@ -252,6 +252,7 @@ function submit(){
          $.ajax({
             url : 'main.py',
             type: 'POST',
+            processData: false,
             contentType: 'multipart/form-data',
             data : fd
          }).done(function(response){ //work on feedback div later
