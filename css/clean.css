@@ -37,7 +37,10 @@ form{
     text-align: left;
     width: 11em;
     min-height: 10em;
-    margin: 5em auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
     padding: 1em;
     font-size: 1em;
     background-color: #f1cbf5;
