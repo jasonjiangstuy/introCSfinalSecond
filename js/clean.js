@@ -27,6 +27,12 @@ function initial(){
    $('#dropperPanel').hide();   
 }
 
+function rgbToHex(r, g, b) {
+   if (r > 255 || g > 255 || b > 255)
+       throw "Invalid color component";
+   return ((r << 16) | (g << 8) | b).toString(16);
+}
+
 function eyeDropperMoveAction(e, which, me){
    console.log(which);
    var pixelData = me.getContext('2d').getImageData(e.offsetX, e.offsetY, 1, 1).data;
@@ -41,15 +47,17 @@ function eyeDropperFinal(e, which, me){
    if (which == 0){
       // marker
       $('#markerColor').css("background-color", 'rgba('+ pixelData[0] + ','+ pixelData[1] +','+ pixelData[2] + ','+ pixelData[3] +')');
-      markerColorFinal = pixelData
-      console.log(pixelData); // figure out how to convert later
+      var hex = "#" + ("000000" + rgbToHex(pixelData[0], pixelData[1], pixelData[2])).slice(-6);
+      backgroundColorFinal = hex
+      console.log(backgroundColorFinal); // figure out how to convert later
       move(0)
 
    }else if (which == 1){
       // background color
       $('#backColor').css("background-color", 'rgba('+ pixelData[0] + ','+ pixelData[1] +','+ pixelData[2] + ','+ pixelData[3] +')');
-      backgroundColorFinal = pixelData
-      console.log(pixelData);
+      var hex = "#" + ("000000" + rgbToHex(pixelData[0], pixelData[1], pixelData[2])).slice(-6);
+      markerColorFinal = hex
+      console.log(markerColorFinal);
       move(0)
    }else{
       alert('That function isn\'t allowed')
