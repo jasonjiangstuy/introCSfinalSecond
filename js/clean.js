@@ -164,7 +164,9 @@ function showStage(step){
       // send ajax method to sever
       $('#dropper').hide('slow');   
       $('#finalSubmit').show('slow')
-      $('#submit').one('click', submit);
+      $('#submit')//.one('click', submit);
+                  .click(submit);
+                  //testing
       
    }
    // testing remove later
