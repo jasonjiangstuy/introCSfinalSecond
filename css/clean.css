@@ -26,6 +26,7 @@ form{
 .selector{
    height: 3em;
    width: 3em;
+   background-color: white;
 }
 
 .mainBoxes{

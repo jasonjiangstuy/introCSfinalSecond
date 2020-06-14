@@ -66,10 +66,12 @@ function eyeDropper(which){
          $('#DropperHeading').text('Pick the Background Color to Continue')
       }else{
          alert('That function isn\'t allowed')
+         print(stage)
          return
       }
    }else{
       alert('That function isn\'t allowed at this stage')
+      print(stage)
       return
    }
    $('#dropper').hide('slow');
