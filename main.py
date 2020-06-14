@@ -112,8 +112,6 @@ if isRequest:
       #convert PIL image to base 64
       import base64
       buffered = BytesIO()
-
-
       finalProccessed.save(buffered, format="JPEG")
       img_str = base64.b64encode(buffered.getvalue())
       print(img_str)
