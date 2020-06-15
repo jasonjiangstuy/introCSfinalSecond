@@ -163,10 +163,11 @@ if isRequest:
       finalProccessed.save( DBarea + '/' + str(cookie)  + '.jpeg', format="JPEG")
       # img_str = base64.b64encode(buffered.getvalue())
       #  return b 64 string
-      import urllib.request
-      from gi.repository import GLib
-      downloads_dir = GLib.get_user_special_dir(GLib.UserDirectory.DIRECTORY_DOWNLOAD)
-      urllib.request.urlretrieve(url, downloads_dir)
+      import requests
+
+      img_data = requests.get(url).content
+      with open(url, 'wb') as handler:
+          handler.write(img_data)
       
 
    except:
