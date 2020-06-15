@@ -108,12 +108,15 @@ if isRequest:
       
       b = bytearray(myImg.value)
       from PIL import Image
+      import io
       image = Image.open(io.BytesIO(b))
       # do proccessing
       finalProccessed = handwriting.removeHandwriting(image)
       # print(image)
+      import base64
       buffered = BytesIO()
       finalProccessed.save(buffered, format="JPEG")
+      img_str = base64.b64encode(buffered.getvalue())
       #  return b 64 string
       print(img_str)
    except:
