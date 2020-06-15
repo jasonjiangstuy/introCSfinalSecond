@@ -41,16 +41,16 @@ def getCookieDB():
       CookieDB = pickle.load(open('CookieDB.p', 'rb'))
    else:
       CookieDB = {}
-      pickle.dump(CookieDB, opne('CookieDB.p', 'wb'))
+      pickle.dump(CookieDB, open('CookieDB.p', 'wb'))
    return CookieDB
 
 
 def saveCookieDB(DB):
    os.chdir(DBarea)
    if os.path.exists('CookieDB.p'):
-      DB = pickle.load( open('CookieDB.p', 'rb')
+      DB = pickle.load( open('CookieDB.p', 'rb'))
    else:
-      pickle.dump(DB, opne('CookieDB.p', 'wb'))
+      pickle.dump(DB, open('CookieDB.p', 'wb'))
    return DB
 
 
