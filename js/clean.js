@@ -289,7 +289,7 @@ function submit(){
             }
          }).done(function(response){ //work on feedback div later
             console.log('request complete');
-            
+            alert('Image Processed')
          })
       }else{
          throw 'missing component of submission, aborting'
