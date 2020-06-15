@@ -52,7 +52,7 @@ function eyeDropperFinal(e, which, me){
       // marker
       $('#markerColor').css("background-color", 'rgba('+ pixelData[0] + ','+ pixelData[1] +','+ pixelData[2] + ','+ pixelData[3] +')');
       var hex = "#" + ("000000" + rgbToHex(pixelData[0], pixelData[1], pixelData[2])).slice(-6);
-      backgroundColorFinal = hex
+      markerColorFinal = hex
       console.log(backgroundColorFinal); // figure out how to convert later
       move(0)
 
@@ -60,7 +60,7 @@ function eyeDropperFinal(e, which, me){
       // background color
       $('#backColor').css("background-color", 'rgba('+ pixelData[0] + ','+ pixelData[1] +','+ pixelData[2] + ','+ pixelData[3] +')');
       var hex = "#" + ("000000" + rgbToHex(pixelData[0], pixelData[1], pixelData[2])).slice(-6);
-      markerColorFinal = hex
+      backgroundColorFinal = hex
       console.log(markerColorFinal);
       move(0)
    }else{
