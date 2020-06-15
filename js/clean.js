@@ -243,10 +243,10 @@ function submit(){
    //credit to https://www.sanwebe.com/2016/07/ajax-form-submit-examples-using-jquery
       // check all items are filled
       var go = true
-      if (!markerColorFinal || markerColorFinal == ''){
-         go = false;
-         alert('You have not specified the marker color, aborting')
-      }
+      // if (!markerColorFinal || markerColorFinal == ''){
+      //    go = false;
+      //    alert('You have not specified the marker color, aborting')
+      // }
       if (!backgroundColorFinal || backgroundColorFinal == ''){
          go = false;
          alert('You have not specified the background color, aborting')
@@ -265,7 +265,7 @@ function submit(){
       
       fd.append('submit', 'True')
       fd.append('myImg',files);
-      fd.append('markerColor', markerColorFinal)
+      // fd.append('markerColor', markerColorFinal)
       fd.append('backgroundColor', backgroundColorFinal)
            
 

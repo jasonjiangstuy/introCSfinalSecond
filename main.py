@@ -123,7 +123,7 @@ if isRequest:
    sys.stderr = sys.stdout
    try:
       myImg = data['myImg']   
-      markerColor = data.getfirst('markerColor')
+      # markerColor = data.getfirst('markerColor')
       backgroundColor = data.getfirst('backgroundColor')
    
    # test that non of them are None type
@@ -140,7 +140,7 @@ if isRequest:
          else:
             pass
       import json 
-      markerColor = json.loads(markerColor)
+      # markerColor = json.loads(markerColor)
       backgroundColor = json.loads(backgroundColor)
       # print("Set-Cookie: " + str(cookie))
       # print()
