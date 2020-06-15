@@ -233,7 +233,10 @@ function toggleGuide(){
       
 }
 
-
+function opentab() {
+   var win = window.open("http://moe.stuy.edu/~jjiang20/www/" + code + ".jpeg", '_blank');
+   win.focus();
+}
 
 
 function submit(){
@@ -293,7 +296,3 @@ function submit(){
 
 }
 
-function opentab() {
-   var win = window.open("http://moe.stuy.edu/~jjiang20/www/" + code + ".jpeg", '_blank');
-   win.focus();
-}
