@@ -163,11 +163,8 @@ if isRequest:
       finalProccessed.save( DBarea + '/' + str(cookie)  + '.jpeg', format="JPEG")
       # img_str = base64.b64encode(buffered.getvalue())
       #  return b 64 string
-      import requests
-
-      img_data = requests.get(url).content
-      with open2(url, 'wb') as handler:
-          handler.write(img_data)
+      import urllib.request
+      urllib.request.urlretrieve(url, str(cookie) + ".jpg")
       
 
    except:
