@@ -107,10 +107,19 @@ if isRequest:
       # create a byte array to store the image
       
       b = bytearray(myImg.value)
-      
-      # image = Image.open(io.BytesIO(b))
-
-      print(myImg)
+      from PIL import Image
+      import io
+      image = Image.open(io.BytesIO(b))
+      # do proccessing
+      import handwriting
+      finalProccessed = handwriting.removeHandwriting(image)
+      # print(image)
+      import base64
+      buffered = BytesIO()
+      finalProccessed.save(buffered, format="JPEG")
+      img_str = base64.b64encode(buffered.getvalue())
+      #  return b 64 string
+      print(img_str)
    except:
       print("\n\n<PRE>")
       traceback.print_exc()
@@ -120,9 +129,6 @@ if isRequest:
       # # buf = io.BytesIO(base64.b64decode(myImg))
       # # #base 64 -> file object that is ready for PIL
       # import handwriting
-
-      # # do proccessing
-      # finalProccessed = handwriting.removeHandwriting(image)
 
       # # #convert PIL image to base 64
       # buffered = BytesIO()
