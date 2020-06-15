@@ -4,6 +4,7 @@
         {{include 'standard.html'}}
         <title>Productivity App Login Page</title>
         <link rel="stylesheet" href="/~jjiang20/CS1920-Final/css/login.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
         <!-- testing -->
         <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script> -->
         <script src="/~jjiang20/CS1920-Final/js/login.js"></script>
@@ -13,6 +14,23 @@
         <!-- navbar -->
         {{include 'navbar.html'}}
 
+
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <h2>How it works</h2>
+                <p>Our system takes an image and determines the size of the image based on the marker line that the
+                    user has made on their paper. It then greyscales the image so that it is easier for the computer
+                    to read, and then identifies letters based on the blobs of black pixels. The program then identifies
+                    the lowest point of each letter. If the lowest point of each letter is consistent throught the
+                    entire sentence, the program assumes that it is computer generated text. It will then crop off
+                    everything below that line (plus a buffer so that it doesn't cut off the dangling parts of letters
+                    like g and p). This cropped portion will then be pasted onto a new image. This repeats for every
+                    sentence in the image until there is no more text to read. In the end, you will have an image with
+                    only the computer generated text in it.</p>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
 
 
     </body>
