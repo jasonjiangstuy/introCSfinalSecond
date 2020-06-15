@@ -105,8 +105,9 @@ if isRequest:
    else:
       print(markerColor, backgroundColor)
       # create a byte array to store the image
-      b = bytearray()
-      myImg.readinto(b)
+      
+      b = bytearray(myImg.value)
+      
       # image = Image.open(io.BytesIO(b))
 
       print(myImg)
