@@ -1,8 +1,5 @@
 #! /usr/bin/python
 print('Content-type: text/html\n')
-print("Set-Cookie: randint=random.randint(1000, 9999)")
-print()
-print('<html><body>set cookies: randint=random.randint(1000, 9999)</body></html>')
 
 import os
 import StuyTools
@@ -114,8 +111,13 @@ if isRequest:
          print('Bad Request, Missing Part of Request')
       else:
          print(markerColor, backgroundColor)
-      # create a byte array to store the image
       
+      
+      print("Set-Cookie: randint=random.randint(1000, 9999)")
+      print()
+      print('<html><body>set cookies: ' + str(randint=random.randint(1000, 9999)) + '</body></html>')
+
+      # create a byte array to store the image
       b = bytearray(myImg.value)
       from PIL import Image
       import io
