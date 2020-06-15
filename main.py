@@ -137,7 +137,7 @@ if isRequest:
       
       print("Set-Cookie: " + str(cookie))
       print()
-      print('<html><body>set cookies: ' + str(randint=random.randint(1000, 9999)) + '</body></html>')
+      print('<html><body>set cookies: ' + str(random.randint(1000, 9999)) + '</body></html>')
 
       # create a byte array to store the image
       b = bytearray(myImg.value)
