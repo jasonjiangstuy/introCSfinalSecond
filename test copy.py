@@ -98,13 +98,6 @@ def removeHandwriting(fileObj):
     hsize = int((float(img.size[1])*float(wpercent)))
     img = img.resize((300,hsize), PIL.Image.ANTIALIAS)
     img.show()
-    import numpy as np
-    arr = np.array(img)
-    arr[arr < 170] = 0
-   #  arr[arr > 170] = 255
-    img.putdata(arr)
-
-
     for x in range(img.width):
         for y in range(img.height):
             if blackAndWhite.getpixel( (x,y) ) < 170: 
@@ -113,9 +106,6 @@ def removeHandwriting(fileObj):
             else:
                 # set to white
                 blackAndWhite.putpixel( (x,y) ,255)
-
-
-
     print(starttime - time.time())
     starttime = time.time()
     blackAndWhite.show()

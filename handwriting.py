@@ -83,6 +83,8 @@ def removeHandwriting(fileObj):
     #credit to https://predictivehacks.com/iterate-over-image-pixels/ to show how to iterate in PIL
     # greyscale
     global blackAndWhite 
+   #  resize image to improve speed
+    
     enhancer = ImageEnhance.Color(img)
     blackAndWhite = enhancer.enhance(0.0)
    #  print(blackAndWhite)
