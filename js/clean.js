@@ -234,6 +234,8 @@ function toggleGuide(){
 }
 
 function opentab(code) {
+   console.log(code);
+   
    var win = window.open(code, '_blank');
    win.focus();
 }
