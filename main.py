@@ -150,7 +150,7 @@ if isRequest:
       # print(image)
       # import base64
       # buffered = BytesIO()
-      finalProccessed.save(DBarea + str(cookie), format="JPEG")
+      finalProccessed.save(DBarea '/'+ str(cookie), format="JPEG")
       # img_str = base64.b64encode(buffered.getvalue())
       #  return b 64 string
       # print(img_str)
