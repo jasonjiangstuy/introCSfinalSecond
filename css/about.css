@@ -21,3 +21,12 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+.container h2 {
+    padding-bottom: 10px;
+    font-size: 1.3em;
+}
+
+.container p {
+    font-size: 1em;
+}
