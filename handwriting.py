@@ -85,9 +85,16 @@ def removeHandwriting(fileObj):
     global blackAndWhite 
    #  resize image to improve speed
     
-    enhancer = ImageEnhance.Color(img)
-    blackAndWhite = enhancer.enhance(0.0)
-   #  print(blackAndWhite)
+    width = 1000
+   #  blackAndWhite.show()
+    wpercent = (width/float(img.size[0]))
+    hsize = int((float(img.size[1])*float(wpercent)))
+    img = img.resize((width,hsize))#, PIL.Image.BOX
+    import numpy as np
+    arr = np.array(img)
+    arr[arr < 170] = 0
+    img = Image.fromarray(arr)
+    blackAndWhite = img
     blackAndWhite = blackAndWhite.convert("L")
 
     for x in range(img.width):
@@ -164,7 +171,7 @@ def removeHandwriting(fileObj):
             bufferlow = math.floor((high - k) * 5)
             # print(v[3])
             # print((left, high, right, k))
-            cut = img.crop( (left, high +  bufferhigh, right, k - bufferlow))
+            cut = img.crop( (left * wpercent, high +  bufferhigh * wpercent, right * wpercent, (k - bufferlow) * wpercent))
             # raise ValueError()
             newImg.paste(cut, (left, high))
             # print('test')
