@@ -234,7 +234,7 @@ function toggleGuide(){
 }
 
 function opentab(code) {
-   var win = window.open("http://moe.stuy.edu/~jjiang20/www/" + code + ".jpeg", '_blank');
+   var win = window.open(code, '_blank');
    win.focus();
 }
 
@@ -280,7 +280,7 @@ function submit(){
             contentType: false,
             data : fd,
             success: function(data){
-              function(){opentab(data)}
+               (function(){opentab(data)})()
             },
             error: function(textStatus, error){
                alert(textStatus, error);
