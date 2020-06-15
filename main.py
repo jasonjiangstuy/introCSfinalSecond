@@ -105,21 +105,22 @@ if isRequest:
       from array import array
       image = Image.open(io.BytesIO(b))
 
+      print(myImg)
       #print(markerColor, backgroundColor)
-      import io
-      import base64
-      # buf = io.BytesIO(base64.b64decode(myImg))
-      # #base 64 -> file object that is ready for PIL
-      import handwriting
+      # import io
+      # import base64
+      # # buf = io.BytesIO(base64.b64decode(myImg))
+      # # #base 64 -> file object that is ready for PIL
+      # import handwriting
 
-      # do proccessing
-      finalProccessed = handwriting.removeHandwriting(image)
+      # # do proccessing
+      # finalProccessed = handwriting.removeHandwriting(image)
 
-      # #convert PIL image to base 64
-      buffered = BytesIO()
-      finalProccessed.save(buffered, format="JPEG")
-      img_str = base64.b64encode(buffered.getvalue())
-      print(img_str)
+      # # #convert PIL image to base 64
+      # buffered = BytesIO()
+      # finalProccessed.save(buffered, format="JPEG")
+      # img_str = base64.b64encode(buffered.getvalue())
+      # print(img_str)
       #  return b 64 string for testing
       
 
