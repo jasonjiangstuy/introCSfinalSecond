@@ -1,4 +1,5 @@
 $(document).ready(function(){
+   this.ajaxSend(alert('Image sent, Please Standby'))
    initial();
 })
 var otow 
@@ -285,7 +286,7 @@ function submit(){
             error: function(textStatus, error){
                alert(textStatus, error);
             }
-         }).onload(alert('Image sent, Please Standby')).done(function(response){ //work on feedback div later
+         }).done(function(response){ //work on feedback div later
             console.log('request complete');
             
          })
