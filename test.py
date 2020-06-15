@@ -88,12 +88,12 @@ def removeHandwriting(fileObj):
     
    #  blackAndWhite = enhancer.enhance(0.0)
    #  print(blackAndWhite)
-   
+   wpercent = 1
    #  blackAndWhite.show()
-    wpercent = (300/float(img.size[0]))
-    hsize = int((float(img.size[1])*float(wpercent)))
-    img = img.resize((300,hsize), PIL.Image.BOX)
-    img.show()
+   #  wpercent = (500/float(img.size[0]))
+   #  hsize = int((float(img.size[1])*float(wpercent)))
+   #  img = img.resize((500,hsize))#, PIL.Image.BOX
+   #  img.show()
     import numpy as np
     arr = np.array(img)
     arr[arr < 170] = 0
@@ -187,8 +187,8 @@ def removeHandwriting(fileObj):
     print(starttime - time.time())
     newImg.show()
 
-removeHandwriting('testImgWithMarkers/difficult.jpg')
+removeHandwriting('Annotation 2020-06-08 012506.jpg')
 
-
+# 'testImgWithMarkers/difficult.jpg'
 
 
