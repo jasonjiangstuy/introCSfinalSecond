@@ -277,10 +277,7 @@ function submit(){
             contentType: false,
             data : fd,
             success: function(data){
-               $('#responseBox').text(data);
-
-               $('#responseImage').attr("src", data)
-                                 .show('slow')
+              function(){opentab(data)}
             },
             error: function(textStatus, error){
                alert(textStatus, error);
@@ -296,7 +293,7 @@ function submit(){
 
 }
 
-function opentab(code) {
+function opentab() {
    var win = window.open("http://moe.stuy.edu/~jjiang20/www/" + code + ".jpeg", '_blank');
    win.focus();
 }

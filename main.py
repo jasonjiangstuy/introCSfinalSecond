@@ -144,8 +144,8 @@ if isRequest:
       import json 
       markerColor = json.loads(markerColor)
       backgroundColor = json.loads(backgroundColor)
-      print("Set-Cookie: " + str(cookie))
-      print()
+      # print("Set-Cookie: " + str(cookie))
+      # print()
       
 
       # create a byte array to store the image
@@ -161,12 +161,13 @@ if isRequest:
       # buffered = BytesIO()
       url = imgArea+ str(cookie) + '.jpeg'
       finalProccessed.save( DBarea + '/' + str(cookie)  + '.jpeg', format="JPEG")
+      print(url)
       # img_str = base64.b64encode(buffered.getvalue())
       #  return b 64 string
-      import urllib.request
-      urllib.request.urlretrieve(url, str(cookie) + ".jpeg")
+      # import urllib.request
+      # urllib.request.urlretrieve(url, str(cookie) + ".jpeg")
       
-      123456
+      # 123456
    except:
       print("\n\n<PRE>")
       traceback.print_exc()
