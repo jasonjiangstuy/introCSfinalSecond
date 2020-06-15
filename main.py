@@ -32,7 +32,7 @@ if 'HTTP_HOST' in os.environ.keys():
    #print(path.split('/')[1:])
    # path for the current directory, used to get the path for images and what not
    imgArea += outsideRoot
-   imgArea = imgArea.replace('introCSfinalSecond', '')
+   imgArea = imgArea.replace('introCSfinalSecond/', '')
    imgArea += 'www/'
    #  print(outsideRoot)
 
@@ -163,7 +163,10 @@ if isRequest:
       finalProccessed.save( DBarea + '/' + str(cookie), format="JPEG")
       # img_str = base64.b64encode(buffered.getvalue())
       #  return b 64 string
-      print(url)
+      import urllib.request
+      from gi.repository import GLib
+      downloads_dir = GLib.get_user_special_dir(GLib.UserDirectory.DIRECTORY_DOWNLOAD)
+      urllib.request.urlretrieve(url, downloads_dir)
       
 
    except:
