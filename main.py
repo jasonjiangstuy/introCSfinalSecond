@@ -89,31 +89,38 @@ isRequest = data.getfirst('submit')
 if isRequest:
    #post request
    stopRoute = True
-   myImg = data.getfirst('myImg')
+   myImg = data['myImg']
    markerColor = data.getfirst('markerColor')
    backgroundColor = data.getfirst('backgroundColor')
    
    # test that non of them are None type
-   if not(myImg and markerColor and backgroundColor):
+   if not(myImg.file and markerColor and backgroundColor):
       #fails
       print('Bad Request, Missing Part of Request')
    else:
-      print(myImg, markerColor, backgroundColor)
+      print(markerColor, backgroundColor)
+      # create a byte array to store the image
+      b = bytearray()
+      myImg.readinto(b)
+      from array import array
+      image = Image.open(io.BytesIO(b))
+
       #print(markerColor, backgroundColor)
-      # import io
-      # import base64
+      import io
+      import base64
       # buf = io.BytesIO(base64.b64decode(myImg))
       # #base 64 -> file object that is ready for PIL
-      # import handwriting
+      import handwriting
 
-      # #do proccessing
-      # finalProccessed = handwriting.removeHandwriting(buf)
+      # do proccessing
+      finalProccessed = handwriting.removeHandwriting(image)
 
       # #convert PIL image to base 64
-      # buffered = BytesIO()
-      # finalProccessed.save(buffered, format="JPEG")
-      # img_str = base64.b64encode(buffered.getvalue())
-      # print(img_str)
+       buffered = BytesIO()
+       finalProccessed.save(buffered, format="JPEG")
+       img_str = base64.b64encode(buffered.getvalue())
+       print(img_str)
+      #  return b 64 string for testing
       
 
 
