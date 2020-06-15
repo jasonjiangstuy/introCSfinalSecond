@@ -40,7 +40,11 @@ def getCookieDB(){
    import pickle
    os.chdir(DBarea)
    if os.path.exists('CookieDB.p'):
-      DB = pickle.load( open('CookieDB.p')
+      DB = pickle.load( open('CookieDB.p', 'rb')
+   else:
+      DB = {}
+      pickle.dump(DB, opne('CookieDB.p', 'wb'))
+   return DB
 }
 
 
@@ -117,7 +121,13 @@ if isRequest:
       
       while True:
          cookie = randint=random.randint(1000, 9999)
-         if cookie not in 
+         DB = getCookieDB()
+         if cookie not in DB:
+            DB[cookie] = True
+            break
+         else:
+            pass
+            
       
       print("Set-Cookie: " + str(cookie))
       print()
