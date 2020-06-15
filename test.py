@@ -79,31 +79,27 @@ class myletter():
 def removeHandwriting(fileObj):
     import time
     starttime = time.time()
-    # URL = "https://www.timeanddate.com/scripts/cityog.php?title=Current%20Local%20Time%20in&amp;city=New%20York&amp;state=New%20York&amp;country=USA&amp;image=new-york1"
-    # response = requests.get(URL)
-    # img = Image.open(BytesIO(response.content))
     img = Image.open(fileObj)
     # img.save('before.jpg')
-    #credit to https://predictivehacks.com/iterate-over-image-pixels/ to show how to iterate in PIL
     # greyscale
     global blackAndWhite 
-    blackAndWhite = img
+    
    #  enhancer = ImageEnhance.Color(img)
     
    #  blackAndWhite = enhancer.enhance(0.0)
    #  print(blackAndWhite)
-    blackAndWhite = blackAndWhite.convert("L")
+   
    #  blackAndWhite.show()
     wpercent = (300/float(img.size[0]))
     hsize = int((float(img.size[1])*float(wpercent)))
-    img = img.resize((300,hsize), PIL.Image.ANTIALIAS)
+    img = img.resize((300,hsize), PIL.Image.BOX)
     img.show()
     import numpy as np
     arr = np.array(img)
     arr[arr < 170] = 0
-   #  arr[arr > 170] = 255
-    img.putdata(arr)
-
+    img = Image.fromarray(arr)
+    blackAndWhite = img
+    blackAndWhite = blackAndWhite.convert("L")
 
     for x in range(img.width):
         for y in range(img.height):
@@ -187,13 +183,12 @@ def removeHandwriting(fileObj):
             # raise ValueError()
             newImg.paste(cut, (left, high))
             # print('test')
+            
     print(starttime - time.time())
-
     newImg.show()
 
-removeHandwriting('testImgWithMarkers/easy.jpg')
+removeHandwriting('testImgWithMarkers/difficult.jpg')
 
-    
 
 
 

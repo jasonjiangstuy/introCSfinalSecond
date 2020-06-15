@@ -160,7 +160,7 @@ if isRequest:
       # import base64
       # buffered = BytesIO()
       url = imgArea+ str(cookie) + '.jpeg'
-      finalProccessed.save( DBarea + '/' + str(cookie), format="JPEG")
+      finalProccessed.save( DBarea + '/' + str(cookie)  + '.jpeg', format="JPEG")
       # img_str = base64.b64encode(buffered.getvalue())
       #  return b 64 string
       import urllib.request
