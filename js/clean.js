@@ -199,10 +199,10 @@ function move(step, stop=false){
          alert('Please give us the background color')
          throw 'Stop step foward'
       }
-      if (!markerColorFinal){
-         alert('Please give us the marker color')
-         throw 'Stop step foward'
-      }
+      // if (!markerColorFinal){
+      //    alert('Please give us the marker color')
+      //    throw 'Stop step foward'
+      // }
    }
    showStage(step)   
 }
