@@ -37,7 +37,8 @@ function rgbToHex(r, g, b) {
 
 function eyeDropperMoveAction(e, which, me){
    console.log(which);
-   var pixelData = me.getContext('2d').getImageData(e.offsetX * otow, e.offsetY * otoh, 1, 1).data;
+   //  * otow  * otoh
+   var pixelData = me.getContext('2d').getImageData(e.offsetX, e.offsetY, 1, 1).data;
    $('#currentColor').css("background-color", 'rgba('+ pixelData[0] + ','+ pixelData[1] +','+ pixelData[2] + ','+ pixelData[3] +')');
 
 }
