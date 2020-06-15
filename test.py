@@ -190,6 +190,6 @@ def removeHandwriting(fileObj):
 
 removeHandwriting('Annotation 2020-06-08 012506.jpg')
 
-# 'testImgWithMarkers/difficult.jpg'
+# 'testImages/difficult.jpg'
 
 

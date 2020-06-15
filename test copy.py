@@ -181,7 +181,7 @@ def removeHandwriting(fileObj):
 
     newImg.show()
 
-removeHandwriting('testImgWithMarkers/easy.jpg')
+removeHandwriting('testImages/easy.jpg')
 
     
 
