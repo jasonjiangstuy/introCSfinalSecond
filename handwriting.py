@@ -74,7 +74,7 @@ class myletter():
         return leftest, rightest, lowest, highest
 
             
-def removeHandwriting(fileObj):
+def removeHandwriting(fileObj, backColor):
     # URL = "https://www.timeanddate.com/scripts/cityog.php?title=Current%20Local%20Time%20in&amp;city=New%20York&amp;state=New%20York&amp;country=USA&amp;image=new-york1"
     # response = requests.get(URL)
     # img = Image.open(BytesIO(response.content))
@@ -150,7 +150,7 @@ def removeHandwriting(fileObj):
 
     # create new image to save the typed words to
 
-    newImg = Image.new('RGB', (blackAndWhite.width, blackAndWhite.height), (255, 255, 255))
+    newImg = Image.new('RGB', (blackAndWhite.width, blackAndWhite.height), backColor) #(255, 255, 255)
     # newImg.show()
 
     #copy paste to new doc

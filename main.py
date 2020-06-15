@@ -153,7 +153,7 @@ if isRequest:
       image = Image.open(io.BytesIO(b))
       # do proccessing
       import handwriting
-      finalProccessed = handwriting.removeHandwriting(image)
+      finalProccessed = handwriting.removeHandwriting(image, tuple(backgroundColor))
       # print(image)
       # import base64
       # buffered = BytesIO()
