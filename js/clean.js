@@ -135,7 +135,16 @@ function showStage(step){
                   canvas.style.height = '65vh'; 
                   console.log(canvas);
                   c = canvas.getContext('2d')
-                  c.drawImage(blockSprite, 0, 0, canvas.width, canvas.height);
+
+                  function vh(v) {
+                     var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+                     return (v * h) / 100;
+                   }
+                   
+                   var em = parseFloat(getComputedStyle(parentElement).fontSize);
+
+
+                  c.drawImage(blockSprite, 0, 0, 11 * em, vh(75));
                  
                }
                blockSprite.setAttribute("src", e.target.result); 
