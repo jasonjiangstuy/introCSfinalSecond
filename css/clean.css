@@ -61,7 +61,8 @@ input, label{
 
 }
 
-#guide{
+#guide {
    background-color: #4d94ff;
-   margin: 3em;
+   margin: 0 3em;
+    font-size: 1em;
 }
