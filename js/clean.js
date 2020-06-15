@@ -1,7 +1,8 @@
 $(document).ready(function(){
    initial();
 })
-
+var otow 
+var otoh
 var markerColorFinal
 var backgroundColorFinal
 var drawnImage = false;
@@ -35,7 +36,7 @@ function rgbToHex(r, g, b) {
 
 function eyeDropperMoveAction(e, which, me){
    console.log(which);
-   var pixelData = me.getContext('2d').getImageData(e.offsetX, e.offsetY, 1, 1).data;
+   var pixelData = me.getContext('2d').getImageData(e.offsetX * otow, e.offsetY * otoh, 1, 1).data;
    $('#currentColor').css("background-color", 'rgba('+ pixelData[0] + ','+ pixelData[1] +','+ pixelData[2] + ','+ pixelData[3] +')');
 
 }
@@ -131,11 +132,14 @@ function showStage(step){
               var blockSprite = document.createElement("IMG");
               blockSprite.onload = function(){
                   var canvas = $('#mainCanvas')[0]
-                  canvas.width = blockSprite.width;
-                  canvas.height = blockSprite.height; 
+                  
+                  otow = blockSprite.width / 300
+                  otoh = blockSprite.height /620
+                  canvas.width = 300;
+                  canvas.height = 620; 
                   console.log(canvas);
                   c = canvas.getContext('2d')
-                  c.drawImage(blockSprite, 0, 0, blockSprite.width, blockSprite.height);
+                  c.drawImage(blockSprite, 0, 0, 300, 620);
                  
                }
                blockSprite.setAttribute("src", e.target.result); 
