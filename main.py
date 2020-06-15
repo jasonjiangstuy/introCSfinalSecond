@@ -94,25 +94,25 @@ if isRequest:
    import traceback
    sys.stderr = sys.stdout
    try:
-   myImg = data['myImg']   
-   markerColor = data.getfirst('markerColor')
-   backgroundColor = data.getfirst('backgroundColor')
+      myImg = data['myImg']   
+      markerColor = data.getfirst('markerColor')
+      backgroundColor = data.getfirst('backgroundColor')
    
    # test that non of them are None type
-   if not(myImg.file and markerColor and backgroundColor):
-      #fails
-      print('Bad Request, Missing Part of Request')
-   else:
-      print(markerColor, backgroundColor)
+      if not(myImg.file and markerColor and backgroundColor):
+         #fails
+         print('Bad Request, Missing Part of Request')
+      else:
+         print(markerColor, backgroundColor)
       # create a byte array to store the image
-      b = bytearray()
-      myImg.readinto(b)
+         b = bytearray()
+         myImg.readinto(b)
       # image = Image.open(io.BytesIO(b))
 
       print(myImg)
    except:
-    print "\n\n<PRE>"
-    traceback.print_exc()
+      print "\n\n<PRE>"
+      traceback.print_exc()
       #print(markerColor, backgroundColor)
       # import io
       # import base64
