@@ -35,7 +35,7 @@ cgitb.enable(display=0, logdir='../www/logdir')
 
 
 # pickle db
-def getCookieDB(){
+def getCookieDB():
    os.chdir(DBarea)
    if os.path.exists('CookieDB.p'):
       CookieDB = pickle.load(open('CookieDB.p', 'rb'))
