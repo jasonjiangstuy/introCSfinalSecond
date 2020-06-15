@@ -38,12 +38,12 @@ cgitb.enable(display=0, logdir='../www/logdir')
 def getCookieDB(){
    os.chdir(DBarea)
    if os.path.exists('CookieDB.p'):
-      DB = pickle.load( open('CookieDB.p', 'rb')
+      CookieDB = pickle.load(open('CookieDB.p', 'rb'))
    else:
-      DB = {}
-      pickle.dump(DB, opne('CookieDB.p', 'wb'))
-   return DB
-}
+      CookieDB = {}
+      pickle.dump(CookieDB, opne('CookieDB.p', 'wb'))
+   return CookieDB
+
 
 def saveCookieDB(DB):
    os.chdir(DBarea)
