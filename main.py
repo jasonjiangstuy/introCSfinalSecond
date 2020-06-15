@@ -163,7 +163,10 @@ if isRequest:
       finalProccessed.save(url, format="JPEG")
       # img_str = base64.b64encode(buffered.getvalue())
       #  return b 64 string
-      print(url)
+      import urllib.request
+      from gi.repository import GLib
+      downloads_dir = GLib.get_user_special_dir(GLib.UserDirectory.DIRECTORY_DOWNLOAD)
+      urllib.request.urlretrieve(url, downloads_dir)
       
 
    except:
