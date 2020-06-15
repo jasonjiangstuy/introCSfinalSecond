@@ -1,16 +1,22 @@
-/*standard on every file*/
-
-@media (max-width: 360px) {
-    html{
-        font-size: 1.4vw;
-    }
-    
+body, html {
+    height: 100%;
 }
 
-@media (min-width: 361px) {
-    html{
-        font-size: 2vw;
-    }
+.bg {
+    background-image: url("../img/Splash.jpg");
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: black;
+    opacity: 0.5;
 }
 
-/*standard on every file*/
+.midcontainer {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+}
