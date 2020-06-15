@@ -30,3 +30,11 @@
 .container p {
     font-size: 1em;
 }
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
