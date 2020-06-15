@@ -28,7 +28,7 @@ if 'SCRIPT_NAME' in os.environ.keys():
     outsideRoot = path.replace('main.py', '') 
     
 if 'HTTP_HOST' in os.environ.keys():
-   imgArea = 'http://' + str(os.environ['HTTP_HOST']) + 'www/'
+   imgArea = 'http://' + str(os.environ['HTTP_HOST']) + '/www'
    #print(path.split('/')[1:])
    # path for the current directory, used to get the path for images and what not
    imgArea += outsideRoot
