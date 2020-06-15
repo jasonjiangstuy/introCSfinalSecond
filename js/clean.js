@@ -18,6 +18,7 @@ function second(){
 }
 function initial(){
    // only show submit image
+   $('#responseImage').hide()
    stage = 0
    console.log('stage:', stage);
    console.log('start or restart');
@@ -277,6 +278,9 @@ function submit(){
             data : fd,
             success: function(data){
                $('#responseBox').text(data);
+
+               $('#responseImage').attr("src", data)
+                                 .show('slow')
             },
             error: function(textStatus, error){
                alert(textStatus, error);
