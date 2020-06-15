@@ -131,21 +131,11 @@ function showStage(step){
               var blockSprite = document.createElement("IMG");
               blockSprite.onload = function(){
                   var canvas = $('#mainCanvas')[0]
-                  canvas.style.width = 'inherit';
-                  canvas.style.height = '65vh'; 
+                  canvas.width = blockSprite.width;
+                  canvas.height = blockSprite.height; 
                   console.log(canvas);
                   c = canvas.getContext('2d')
-
-                  function vh(v) {
-                     var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-                     return (v * h) / 100;
-                   }
-                   
-                   var em = parseFloat(getComputedStyle($('#dropperPanel')[0]).fontSize);
-                   
-
-
-                  c.drawImage(blockSprite, 0, 0, 11 * em, vh(75));
+                  c.drawImage(blockSprite, 0, 0, blockSprite.width, blockSprite.height);
                  
                }
                blockSprite.setAttribute("src", e.target.result); 
