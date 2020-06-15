@@ -112,7 +112,7 @@ if isRequest:
 
       print(myImg)
    except:
-      print "\n\n<PRE>"
+      print("\n\n<PRE>")
       traceback.print_exc()
       #print(markerColor, backgroundColor)
       # import io
