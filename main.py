@@ -44,7 +44,7 @@ def getCookieDB(){
 }
 
 
-#functions -------------------------------
+# functions -------------------------------
 def render_template(filename, **kwargs): #root = root
     #given filename in this directory
    #  print('Where are we: ' + str(os.getcwd()))
