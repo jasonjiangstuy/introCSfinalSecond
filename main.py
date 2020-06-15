@@ -163,8 +163,9 @@ if isRequest:
       finalProccessed.save( DBarea + '/' + str(cookie)  + '.jpeg', format="JPEG")
       # img_str = base64.b64encode(buffered.getvalue())
       #  return b 64 string
-      import urllib.request
-      urllib.request.urlretrieve(url, str(cookie) + ".jpeg")
+      import clean
+      clean.opentab(str(cookie))
+
       
 
    except:
