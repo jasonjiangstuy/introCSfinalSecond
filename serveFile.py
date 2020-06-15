@@ -12,13 +12,13 @@ isRequest = data.getfirst('cookieRequest')
 
 if isRequest:
    if 'HTTP_COOKIE' in os.environ.keys():
-	   cookie_set = os.environ['HTTP_COOKIE']
-	   cookies = cookie_set.split(';')
-	   for acookie in cookies:
+       cookie_set = os.environ['HTTP_COOKIE']
+       cookies = cookie_set.split(';')
+       for acookie in cookies:
          #test
-   	   print(acookie.strip())
+       	print(acookie.strip())
 
          # if cookie matches a file, return that file
 
    else:
-	   print('Not Done')
+       print('Not Done')

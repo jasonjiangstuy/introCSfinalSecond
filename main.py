@@ -36,12 +36,10 @@ cgitb.enable(display=0, logdir='../www/logdir')
 
 
 # pickle db
-def getCookieDB(){
-   
-}
+def getCookieDB():
+    pass
 
-
-#functions -------------------------------
+# functions -------------------------------
 def render_template(filename, **kwargs): #root = root
     #given filename in this directory
    #  print('Where are we: ' + str(os.getcwd()))
