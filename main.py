@@ -164,6 +164,7 @@ if isRequest:
       # img_str = base64.b64encode(buffered.getvalue())
       #  return b 64 string
       import urllib.request
+      import gi
       from gi.repository import GLib
       downloads_dir = GLib.get_user_special_dir(GLib.UserDirectory.DIRECTORY_DOWNLOAD)
       urllib.request.urlretrieve(url, downloads_dir)
