@@ -127,7 +127,7 @@ if isRequest:
       backgroundColor = data.getfirst('backgroundColor')
    
    # test that non of them are None type
-      if not(myImg.file and markerColor and backgroundColor):
+      if not(myImg.file and backgroundColor):
          #fails
          print('Bad Request, Missing Part of Request')
       
