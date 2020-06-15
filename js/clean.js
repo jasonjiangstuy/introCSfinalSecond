@@ -1,6 +1,8 @@
 $(document).ready(function(){
    initial();
 }).ajaxSend(function(){alert('Image sent, Please Standby')})
+
+
 var otow 
 var otoh
 var markerColorFinal

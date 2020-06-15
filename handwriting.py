@@ -42,9 +42,10 @@ def findSurrounding(startCoord, letterObject):
                if blackAndWhite.getpixel(testPixel) == 0 and testPixel not in foundAlready:
                   stack.append( testPixel )
             # black left pixel
-            testPixel =  (startCoord[0] - 1 , startCoord[1]) 
-            if blackAndWhite.getpixel(testPixel) == 0 and testPixel not in foundAlready:
-                stack.append( testPixel )
+            if (startCoord[0] - 1 < 0):
+               testPixel =  (startCoord[0] - 1 , startCoord[1]) 
+               if blackAndWhite.getpixel(testPixel) == 0 and testPixel not in foundAlready:
+                  stack.append( testPixel )
         stack = stack[1:]
     return myObject
 
