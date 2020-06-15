@@ -137,7 +137,7 @@ if isRequest:
       
       print("Set-Cookie: " + str(cookie))
       print()
-      print('<html><body>set cookies: ' + str(random.randint(1000, 9999)) + '</body></html>')
+      
 
       # create a byte array to store the image
       b = bytearray(myImg.value)
@@ -150,10 +150,13 @@ if isRequest:
       # print(image)
       # import base64
       # buffered = BytesIO()
-      finalProccessed.save(DBarea + '/'+ str(cookie).jpeg, format="JPEG")
+      url = DBarea + '/'+ str(cookie) +'.jpeg'
+      finalProccessed.save(url, format="JPEG")
       # img_str = base64.b64encode(buffered.getvalue())
       #  return b 64 string
-      # print(img_str)
+      print(url)
+      
+
    except:
       print("\n\n<PRE>")
       traceback.print_exc()
