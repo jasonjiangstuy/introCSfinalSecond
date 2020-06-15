@@ -4,7 +4,7 @@ print('Content-type: text/html\n')
 import os
 import StuyTools
 import random
-
+import pickle
 StuyTools.PWS_startup()
 
 #backup paths
@@ -25,7 +25,6 @@ if 'SCRIPT_NAME' in os.environ.keys():
     #print(path.split('/')[1:])
     # path for the current directory, used to get the path for images and what not
     outsideRoot = path.replace('main.py', '') 
-    DB = root
 
    #  print(outsideRoot)
 
@@ -37,7 +36,6 @@ cgitb.enable(display=0, logdir='../www/logdir')
 
 # pickle db
 def getCookieDB(){
-   import pickle
    os.chdir(DBarea)
    if os.path.exists('CookieDB.p'):
       DB = pickle.load( open('CookieDB.p', 'rb')
@@ -46,6 +44,14 @@ def getCookieDB(){
       pickle.dump(DB, opne('CookieDB.p', 'wb'))
    return DB
 }
+
+def saveCookieDB(DB):
+   os.chdir(DBarea)
+   if os.path.exists('CookieDB.p'):
+      DB = pickle.load( open('CookieDB.p', 'rb')
+   else:
+      pickle.dump(DB, opne('CookieDB.p', 'wb'))
+   return DB
 
 
 # functions -------------------------------
