@@ -166,7 +166,7 @@ if isRequest:
       import requests
 
       img_data = requests.get(url).content
-      with open(url, 'wb') as handler:
+      with open2(url, 'wb') as handler:
           handler.write(img_data)
       
 
