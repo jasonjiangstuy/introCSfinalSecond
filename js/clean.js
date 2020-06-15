@@ -141,7 +141,8 @@ function showStage(step){
                      return (v * h) / 100;
                    }
                    
-                   var em = parseFloat(getComputedStyle(parentElement).fontSize);
+                   var em = parseFloat(getComputedStyle($('#dropperPanel')[0]).fontSize);
+                   
 
 
                   c.drawImage(blockSprite, 0, 0, 11 * em, vh(75));
