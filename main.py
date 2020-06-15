@@ -130,8 +130,6 @@ if isRequest:
       if not(myImg.file and markerColor and backgroundColor):
          #fails
          print('Bad Request, Missing Part of Request')
-      else:
-         print(markerColor, backgroundColor)
       
       while True:
          cookie = randint=random.randint(1000, 9999)
