@@ -102,8 +102,7 @@ if isRequest:
       # create a byte array to store the image
       b = bytearray()
       myImg.readinto(b)
-      from array import array
-      image = Image.open(io.BytesIO(b))
+      # image = Image.open(io.BytesIO(b))
 
       print(myImg)
       #print(markerColor, backgroundColor)
