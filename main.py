@@ -9,7 +9,7 @@ StuyTools.PWS_startup()
 
 #backup paths
 root = '/home/students/2022/jjiang20/public_html/introCSfinalSecond/'
-outsideRoot =  '/~jjiang20/introCSfinalSecond/www/'
+outsideRoot =  '/~jjiang20/www/'
 DBarea = '/home/students/2022/jjiang20/public_html/www'
 imgArea = 'http://moe.stuy.edu/~jjiang20/www/'
 #testing
