@@ -32,7 +32,7 @@ if 'HTTP_HOST' in os.environ.keys():
    #print(path.split('/')[1:])
    # path for the current directory, used to get the path for images and what not
    imgArea += outsideRoot
-   imgArea = imgArea.replace('introCSfinalSecond', '')
+   imgArea = imgArea.replace('introCSfinalSecond/', '')
    imgArea += 'www/'
    #  print(outsideRoot)
 
