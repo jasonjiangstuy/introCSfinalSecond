@@ -9,7 +9,7 @@ StuyTools.PWS_startup()
 
 #backup paths
 root = '/home/students/2022/jjiang20/public_html/introCSfinalSecond/'
-outsideRoot =  '/~jjiang20/'
+outsideRoot =  '/~jjiang20/www/'
 DBarea = '/home/students/2022/jjiang20/public_html/www'
 imgArea = 'http://moe.stuy.edu/~jjiang20/www/'
 #testing
@@ -31,7 +31,7 @@ if 'HTTP_HOST' in os.environ.keys():
    imgArea = 'http://' + str(os.environ['HTTP_HOST'])
    #print(path.split('/')[1:])
    # path for the current directory, used to get the path for images and what not
-   imgArea += outsideRoot + "www/"
+   imgArea += outsideRoot
 
    #  print(outsideRoot)
 
