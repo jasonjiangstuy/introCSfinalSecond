@@ -111,6 +111,7 @@ if isRequest:
       import io
       image = Image.open(io.BytesIO(b))
       # do proccessing
+      import handwriting
       finalProccessed = handwriting.removeHandwriting(image)
       # print(image)
       import base64
