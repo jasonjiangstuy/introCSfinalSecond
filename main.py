@@ -37,7 +37,10 @@ cgitb.enable(display=0, logdir='../www/logdir')
 
 # pickle db
 def getCookieDB(){
-   
+   import pickle
+   os.chdir(DBarea)
+   if os.path.exists('CookieDB.p'):
+      DB = pickle.load( open('CookieDB.p')
 }
 
 
@@ -112,8 +115,11 @@ if isRequest:
       else:
          print(markerColor, backgroundColor)
       
+      while True:
+         cookie = randint=random.randint(1000, 9999)
+         if cookie not in 
       
-      print("Set-Cookie: randint=random.randint(1000, 9999)")
+      print("Set-Cookie: " + str(cookie))
       print()
       print('<html><body>set cookies: ' + str(randint=random.randint(1000, 9999)) + '</body></html>')
 
@@ -126,12 +132,12 @@ if isRequest:
       import handwriting
       finalProccessed = handwriting.removeHandwriting(image)
       # print(image)
-      import base64
-      buffered = BytesIO()
-      finalProccessed.save(buffered, format="JPEG")
-      img_str = base64.b64encode(buffered.getvalue())
+      # import base64
+      # buffered = BytesIO()
+      finalProccessed.save(DBarea + '/www/' + str(cookie), format="JPG")
+      # img_str = base64.b64encode(buffered.getvalue())
       #  return b 64 string
-      print(img_str)
+      # print(img_str)
    except:
       print("\n\n<PRE>")
       traceback.print_exc()
