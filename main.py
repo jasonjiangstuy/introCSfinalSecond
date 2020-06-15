@@ -1,8 +1,13 @@
 #! /usr/bin/python
 print('Content-type: text/html\n')
+print("Set-Cookie: randint=random.randint(1000, 9999)")
+print()
+print('<html><body>set cookies: randint=random.randint(1000, 9999)</body></html>')
 
 import os
 import StuyTools
+import random
+
 StuyTools.PWS_startup()
 
 #backup paths
