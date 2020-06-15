@@ -53,14 +53,14 @@ function eyeDropperFinal(e, which, me){
    if (which == 0){
       // marker
       $('#markerColor').css("background-color", 'rgba('+ pixelData[0] + ','+ pixelData[1] +','+ pixelData[2] + ','+ pixelData[3] +')');
-      markerColorFinal = [pixelData[0], pixelData[1], pixelData[2]]
+      markerColorFinal = JSON.stringify([pixelData[0], pixelData[1], pixelData[2]])
       console.log(backgroundColorFinal); // figure out how to convert later
       move(0)
 
    }else if (which == 1){
       // background color
       $('#backColor').css("background-color", 'rgba('+ pixelData[0] + ','+ pixelData[1] +','+ pixelData[2] + ','+ pixelData[3] +')');
-      backgroundColorFinal = [pixelData[0], pixelData[1], pixelData[2]]
+      backgroundColorFinal = JSON.stringify([pixelData[0], pixelData[1], pixelData[2]])
       console.log(markerColorFinal);
       move(0)
    }else{

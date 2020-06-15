@@ -140,8 +140,9 @@ if isRequest:
             break
          else:
             pass
-            
-      
+      import json 
+      markerColor = json.loads(markerColor)
+      backgroundColor = json.loads(backgroundColor)
       print("Set-Cookie: " + str(cookie))
       print()
       
