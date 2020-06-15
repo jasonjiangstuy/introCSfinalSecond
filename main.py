@@ -116,10 +116,10 @@ if isRequest:
       finalProccessed = handwriting.removeHandwriting(image)
 
       # #convert PIL image to base 64
-       buffered = BytesIO()
-       finalProccessed.save(buffered, format="JPEG")
-       img_str = base64.b64encode(buffered.getvalue())
-       print(img_str)
+      buffered = BytesIO()
+      finalProccessed.save(buffered, format="JPEG")
+      img_str = base64.b64encode(buffered.getvalue())
+      print(img_str)
       #  return b 64 string for testing
       
 
