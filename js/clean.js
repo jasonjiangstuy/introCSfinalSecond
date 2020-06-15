@@ -276,7 +276,7 @@ function submit(){
             contentType: false,
             data : fd,
             success: function(data){
-               alert(data);
+               $('#responseBox').text(data);
             },
             error: function(textStatus, error){
                alert(textStatus, error);

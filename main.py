@@ -98,23 +98,22 @@ if isRequest:
       #fails
       print('Bad Request, Missing Part of Request')
    else:
-      # print(myImg, markerColor, backgroundColor)
+      print(myImg, markerColor, backgroundColor)
       #print(markerColor, backgroundColor)
-      # credits
-      import io
-      import base64
-      buf = io.BytesIO(base64.b64decode(myImg))
-      #base 64 -> file object that is ready for PIL
-      import handwriting
+      # import io
+      # import base64
+      # buf = io.BytesIO(base64.b64decode(myImg))
+      # #base 64 -> file object that is ready for PIL
+      # import handwriting
 
-      #do proccessing
-      finalProccessed = handwriting.removeHandwriting(buf)
+      # #do proccessing
+      # finalProccessed = handwriting.removeHandwriting(buf)
 
-      #convert PIL image to base 64
-      buffered = BytesIO()
-      finalProccessed.save(buffered, format="JPEG")
-      img_str = base64.b64encode(buffered.getvalue())
-      print(img_str)
+      # #convert PIL image to base 64
+      # buffered = BytesIO()
+      # finalProccessed.save(buffered, format="JPEG")
+      # img_str = base64.b64encode(buffered.getvalue())
+      # print(img_str)
       
 
 
