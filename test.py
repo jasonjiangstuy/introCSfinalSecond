@@ -88,7 +88,7 @@ def removeHandwriting(fileObj):
     
    #  blackAndWhite = enhancer.enhance(0.0)
    #  print(blackAndWhite)
-   wpercent = 1
+    wpercent = 1
    #  blackAndWhite.show()
    #  wpercent = (500/float(img.size[0]))
    #  hsize = int((float(img.size[1])*float(wpercent)))
