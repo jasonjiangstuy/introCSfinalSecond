@@ -13,8 +13,8 @@ outsideRoot =  '/~jjiang20/introCSfinalSecond/'
 DBarea = '/home/students/2022/jjiang20/public_html/www'
 imgArea = 'http://moe.stuy.edu/~jjiang20/www/'
 #testing
-for param in os.environ.keys():
-    print("<b>%20s</b>: %s<\br>" % (param, os.environ[param]))
+# for param in os.environ.keys():
+#     print("<b>%20s</b>: %s<\br>" % (param, os.environ[param]))
 
 # if 'SCRIPT_FILENAME' in os.environ.keys():
 #     path = str(os.environ['SCRIPT_FILENAME'])
