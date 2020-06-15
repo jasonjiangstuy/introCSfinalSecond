@@ -89,7 +89,12 @@ isRequest = data.getfirst('submit')
 if isRequest:
    #post request
    stopRoute = True
-   myImg = data['myImg']
+
+   import sys
+   import traceback
+   sys.stderr = sys.stdout
+   try:
+   myImg = data['myImg']   
    markerColor = data.getfirst('markerColor')
    backgroundColor = data.getfirst('backgroundColor')
    
@@ -105,6 +110,9 @@ if isRequest:
       # image = Image.open(io.BytesIO(b))
 
       print(myImg)
+   except:
+    print "\n\n<PRE>"
+    traceback.print_exc()
       #print(markerColor, backgroundColor)
       # import io
       # import base64
