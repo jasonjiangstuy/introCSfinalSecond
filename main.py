@@ -107,7 +107,7 @@ if isRequest:
       # create a byte array to store the image
       
       b = bytearray(myImg.value)
-      
+      from PIL import Image
       image = Image.open(io.BytesIO(b))
       # do proccessing
       finalProccessed = handwriting.removeHandwriting(image)
