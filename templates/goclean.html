@@ -29,45 +29,37 @@
 
             </div>
 
-
                <!-- get the user's marker color and background paper color -->
             <div id='dropper' class='mainBoxes'>
-
-               <span id='heading'>Clean Your Work</span>
-               <button onclick='toggleGuide()' id='toggleGuide'>User Guide</button>
-
-               
-               
-
-                        <table>
-                           <tr>
-                              <td>
-                                 Choose Marker Color Below:
-                              </td>
-                              <td>
-                                 Choose Background Color Below:
-                              </td>
-                           </tr>
-                           <tr>
-                              <td>
-                                 <div id='markerColor' onclick="eyeDropper(0)" class='selector'></div>
-                              </td>
-                              <td>
-                                 <div id='backColor' onclick="eyeDropper(1)"class='selector'></div>
-                              </td>
-                           </tr>
-                           <tr>
-                              <td>
-                        <button onclick="move(-1)">Previous</button> 
-                     </td><td>
-                        <button onclick="move(1, true)">Next</button> 
-                     </td>
-                     </tr>
-                        </table>
-
+                <span id='heading'>Clean Your Work</span>
+                <button onclick='toggleGuide()' id='toggleGuide'>User Guide</button>
+                <table>
+                   <tr>
+                      <td>
+                         Choose Marker Color Below:
+                      </td>
+                      <td>
+                         Choose Background Color Below:
+                      </td>
+                   </tr>
+                   <tr>
+                      <td>
+                         <div id='markerColor' onclick="eyeDropper(0)" class='selector'></div>
+                      </td>
+                      <td>
+                         <div id='backColor' onclick="eyeDropper(1)"class='selector'></div>
+                      </td>
+                   </tr>
+                   <tr>
+                      <td>
+                        <button onclick="move(-1)">Previous</button>
+                      </td>
+                       <td>
+                        <button onclick="move(1, true)">Next</button>
+                       </td>
+                    </tr>
+                </table>
             </div>
-
-
          </div>
          <div class='mainBoxes' id='dropperPanel'>
             <span id='DropperHeading'></span>
@@ -85,11 +77,10 @@
          </div>
 
 
-            <div id="Guide">
+            <div id="Guide" style="margin: 0 3em">
                <h1>
-                  How To Use Our HandWriter Eraser 
-                     <button onclick='toggleGuide()' id='toggleGuide'>Return to Cleaner</button>
-                  
+                  How To Use Our Handwriting Eraser
+                   <button onclick='toggleGuide()' id='toggleGuide'>Return to Cleaner</button>
                </h1>
                <ol>
                   <li>
