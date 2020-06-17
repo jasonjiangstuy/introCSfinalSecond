@@ -114,7 +114,6 @@ def removeHandwriting(fileObj, backColor):
     hsize = int((float(blackAndWhite.size[1])*float(wpercent)))
     blackAndWhite = blackAndWhite.resize((300,hsize), PIL.Image.ANTIALIAS)
     blackAndWhite.show()
-    input()
     for x in range(blackAndWhite.width):
         for y in range(blackAndWhite.height):
             if blackAndWhite.getpixel( (x,y) )< 170: 
