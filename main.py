@@ -53,7 +53,7 @@ def getCookieDB():
    return CookieDB
 
 
-def saveCookieDB(DB, cookie):
+def saveCookieDB(DB):
    os.chdir(DBarea)
    if os.path.exists('CookieDB.p'):
       DB = pickle.load( open('CookieDB.p', 'rb'))
