@@ -53,7 +53,7 @@ def getCookieDB():
    return CookieDB
 
 
-def saveCookieDB(DB):
+def saveCookieDB(DB, cookie):
    os.chdir(DBarea)
    if os.path.exists('CookieDB.p'):
       DB = pickle.load( open('CookieDB.p', 'rb'))
@@ -130,7 +130,7 @@ if isRequest:
       if not(myImg.file and backgroundColor):
          #fails
          print('Bad Request, Missing Part of Request')
-      
+      cookie = ''
       while True:
          cookie = randint=random.randint(1000, 9999)
          DB = getCookieDB()
@@ -139,6 +139,7 @@ if isRequest:
             break
          else:
             pass
+      saveCookieDB(DB)
       import json 
       # markerColor = json.loads(markerColor)
       backgroundColor = json.loads(backgroundColor)
