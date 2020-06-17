@@ -167,7 +167,7 @@ def removeHandwriting(fileObj, backColor):
 
     # create new image to save the typed words to
 
-    newImg = Image.new('RGB', (blackAndWhite.width, blackAndWhite.height), backColor) #(255, 255, 255)
+    newImg = Image.new('RGB', (img.width, img.height), backColor) #(255, 255, 255)
     # newImg.show()
     wpercent = 1/ wpercent
     #copy paste to new doc

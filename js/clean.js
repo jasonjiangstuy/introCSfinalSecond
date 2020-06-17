@@ -262,7 +262,7 @@ function submit(){
 
       var fd = new FormData();
 
-      console.log(markerColorFinal);
+      // console.log(markerColorFinal);
       console.log(backgroundColorFinal);
       
       fd.append('submit', 'True')
