@@ -282,7 +282,7 @@ function submit(){
             contentType: false,
             data : fd,
             success: function(data){
-               (function(){opentab(data)})()
+               window.location.href = data;
             },
             error: function(textStatus, error){
                alert(textStatus, error);
