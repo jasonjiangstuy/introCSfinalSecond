@@ -33,6 +33,7 @@ def findSurrounding(startCoord, letterObject):
             foundAlready[startCoord] = ''
             myObject.add(startCoord)
 
+            # checking for:
             # black right pixel
             if (startCoord[0] + 1 < width):
                testPixel =  (startCoord[0] + 1, startCoord[1]) 
@@ -48,6 +49,18 @@ def findSurrounding(startCoord, letterObject):
                testPixel =  (startCoord[0] - 1 , startCoord[1]) 
                if blackAndWhite.getpixel(testPixel) == 0 and testPixel not in foundAlready:
                   stack.append( testPixel )
+            # black bottom left pixel
+            if (startCoord[1] + 1 < height) and (startCoord[0] - 1 < 0):
+               testPixel =  (startCoord[0] - 1 , startCoord[1] + 1) 
+               if blackAndWhite.getpixel(testPixel) == 0 and testPixel not in foundAlready:
+                  stack.append( testPixel )
+            
+            # black bottom right pixel
+            if (startCoord[1] + 1 < height) and (startCoord[0] + 1 < width):
+               testPixel =  (startCoord[0] + 1 , startCoord[1] + 1) 
+               if blackAndWhite.getpixel(testPixel) == 0 and testPixel not in foundAlready:
+                  stack.append( testPixel )
+            
         stack = stack[1:]
     return myObject
 
@@ -92,14 +105,20 @@ def removeHandwriting(fileObj):
     
    #  blackAndWhite = enhancer.enhance(0.0)
    #  print(blackAndWhite)
+    import numpy as np
+    arr = np.array(img)
+    arr[arr < 170] = 0
+    img = Image.fromarray(arr)
+    blackAndWhite = img
     blackAndWhite = blackAndWhite.convert("L")
    #  blackAndWhite.show()
-    wpercent = (300/float(img.size[0]))
-    hsize = int((float(img.size[1])*float(wpercent)))
-    img = img.resize((300,hsize), PIL.Image.ANTIALIAS)
-    img.show()
-    for x in range(img.width):
-        for y in range(img.height):
+    wpercent = (300/float(blackAndWhite.size[0]))
+    hsize = int((float(blackAndWhite.size[1])*float(wpercent)))
+    blackAndWhite = blackAndWhite.resize((300,hsize), PIL.Image.ANTIALIAS)
+    blackAndWhite.show()
+    input()
+    for x in range(blackAndWhite.width):
+        for y in range(blackAndWhite.height):
             if blackAndWhite.getpixel( (x,y) ) < 170: 
                 # set to black
                 blackAndWhite.putpixel( (x,y) ,0)
@@ -108,6 +127,7 @@ def removeHandwriting(fileObj):
                 blackAndWhite.putpixel( (x,y) ,255)
     print(starttime - time.time())
     starttime = time.time()
+    input()
     blackAndWhite.show()
 
 
@@ -147,14 +167,16 @@ def removeHandwriting(fileObj):
 
     # for i in myletterFrequences.values():
     #     print(len(i[1]))
-
+    print(myletterFrequences)
     tolerance = 30
 
     # create new image to save the typed words to
 
-    newImg = Image.new('RGB', (blackAndWhite.width, blackAndWhite.height), (255, 255, 255))
+    newImg = Image.new('RGB', (img.width, img.height), (255, 255, 255))
     # newImg.show()
-
+    print(wpercent)
+    wpercent = 1/ wpercent
+    print(wpercent)
     #copy paste to new doc
     # print(myletterFrequences)
     for k, v in myletterFrequences.items():
@@ -162,26 +184,32 @@ def removeHandwriting(fileObj):
         if v[0] < tolerance:
             #doesnt pass tolerance of frequences
             continue
-        elif v[0] == 3:
-            continue
+      #   elif v[0] == 3:
+      #       continue
         else:
             right = max(v[1])
             left = min(v[2])
             high = min(v[3])
 
-            bufferhigh = math.ceil((high - k) * 3)
-            bufferlow = math.floor((high - k) * 5)
+            bufferhigh = (high - k) * 3
+            bufferlow = (high - k) * 6
             # print(v[3])
-            # print((left, high, right, k))
-            cut = img.crop( (left * wpercent, high +  bufferhigh * wpercent, right * wpercent, (k - bufferlow) * wpercent))
+            
+            
+            l = math.floor(left * wpercent)
+            t = math.floor((high +  bufferhigh) * wpercent)
+            r = math.ceil(right * wpercent)
+            b = math.ceil((k - bufferlow) * wpercent)
+            print( (l, t, r, b) )
+            cut = img.crop( (l, t, r, b ))
             # raise ValueError()
-            newImg.paste(cut, (left, high))
+            newImg.paste(cut, (l, t)) 
             # print('test')
     print(starttime - time.time())
+   #  input()
+    newImg.save('jason3.jpg')
 
-    newImg.show()
-
-removeHandwriting('testImages/easy.jpg')
+removeHandwriting('jason2.jpg')
 
     
 

@@ -31,6 +31,7 @@ def findSurrounding(startCoord, letterObject):
             foundAlready[startCoord] = ''
             myObject.add(startCoord)
 
+            # checking for:
             # black right pixel
             if (startCoord[0] + 1 < width):
                testPixel =  (startCoord[0] + 1, startCoord[1]) 
@@ -46,6 +47,18 @@ def findSurrounding(startCoord, letterObject):
                testPixel =  (startCoord[0] - 1 , startCoord[1]) 
                if blackAndWhite.getpixel(testPixel) == 0 and testPixel not in foundAlready:
                   stack.append( testPixel )
+            # black bottom left pixel
+            if (startCoord[1] + 1 < height) and (startCoord[0] - 1 < 0):
+               testPixel =  (startCoord[0] - 1 , startCoord[1] + 1) 
+               if blackAndWhite.getpixel(testPixel) == 0 and testPixel not in foundAlready:
+                  stack.append( testPixel )
+            
+            # black bottom right pixel
+            if (startCoord[1] + 1 < height) and (startCoord[0] + 1 < width):
+               testPixel =  (startCoord[0] + 1 , startCoord[1] + 1) 
+               if blackAndWhite.getpixel(testPixel) == 0 and testPixel not in foundAlready:
+                  stack.append( testPixel )
+            
         stack = stack[1:]
     return myObject
 
@@ -74,31 +87,36 @@ class myletter():
         return leftest, rightest, lowest, highest
 
             
-def removeHandwriting(fileObj, backColor):
+def removeHandwriting(fileObj):
+    import time
+    starttime = time.time()
     # URL = "https://www.timeanddate.com/scripts/cityog.php?title=Current%20Local%20Time%20in&amp;city=New%20York&amp;state=New%20York&amp;country=USA&amp;image=new-york1"
     # response = requests.get(URL)
     # img = Image.open(BytesIO(response.content))
-    img = fileObj
+    img = Image.open(fileObj)
     # img.save('before.jpg')
     #credit to https://predictivehacks.com/iterate-over-image-pixels/ to show how to iterate in PIL
     # greyscale
     global blackAndWhite 
-   #  resize image to improve speed
+    blackAndWhite = img
+   #  enhancer = ImageEnhance.Color(img)
     
-    width = 1000
-   #  blackAndWhite.show()
-    wpercent = (width/float(img.size[0]))
-    hsize = int((float(img.size[1])*float(wpercent)))
-    img = img.resize((width,hsize))#, PIL.Image.BOX
+   #  blackAndWhite = enhancer.enhance(0.0)
+   #  print(blackAndWhite)
     import numpy as np
     arr = np.array(img)
     arr[arr < 170] = 0
     img = Image.fromarray(arr)
     blackAndWhite = img
     blackAndWhite = blackAndWhite.convert("L")
-
-    for x in range(img.width):
-        for y in range(img.height):
+   #  blackAndWhite.show()
+    wpercent = (300/float(blackAndWhite.size[0]))
+    hsize = int((float(blackAndWhite.size[1])*float(wpercent)))
+    blackAndWhite = blackAndWhite.resize((300,hsize), PIL.Image.ANTIALIAS)
+    blackAndWhite.show()
+    input()
+    for x in range(blackAndWhite.width):
+        for y in range(blackAndWhite.height):
             if blackAndWhite.getpixel( (x,y) )< 170: 
                 # set to black
                 blackAndWhite.putpixel( (x,y) ,0)
@@ -152,7 +170,7 @@ def removeHandwriting(fileObj, backColor):
 
     newImg = Image.new('RGB', (blackAndWhite.width, blackAndWhite.height), backColor) #(255, 255, 255)
     # newImg.show()
-
+    wpercent = 1/ wpercent
     #copy paste to new doc
     # print(myletterFrequences)
     for k, v in myletterFrequences.items():
@@ -160,20 +178,23 @@ def removeHandwriting(fileObj, backColor):
         if v[0] < tolerance:
             #doesnt pass tolerance of frequences
             continue
-        elif v[0] == 3:
-            continue
         else:
             right = max(v[1])
             left = min(v[2])
             high = min(v[3])
 
-            bufferhigh = math.ceil((high - k) * 3)
-            bufferlow = math.floor((high - k) * 5)
+            bufferhigh = (high - k) * 3
+            bufferlow = (high - k) * 6
             # print(v[3])
-            # print((left, high, right, k))
-            cut = img.crop( (left * wpercent, high +  bufferhigh * wpercent, right * wpercent, (k - bufferlow) * wpercent))
+            
+            
+            l = math.floor(left * wpercent)
+            t = math.floor((high +  bufferhigh) * wpercent)
+            r = math.ceil(right * wpercent)
+            b = math.ceil((k - bufferlow) * wpercent)
+            cut = img.crop( (l, t, r, b ))
             # raise ValueError()
-            newImg.paste(cut, (left, high))
+            newImg.paste(cut, (l, t)) 
             # print('test')
 
     return(newImg)
