@@ -87,7 +87,7 @@ class myletter():
         return leftest, rightest, lowest, highest
 
             
-def removeHandwriting(fileObj):
+def removeHandwriting(fileObj, backColor):
     import time
     starttime = time.time()
     # URL = "https://www.timeanddate.com/scripts/cityog.php?title=Current%20Local%20Time%20in&amp;city=New%20York&amp;state=New%20York&amp;country=USA&amp;image=new-york1"
